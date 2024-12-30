@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {height, primaryBlack, width} from '../../utils/style.constants';
+import {height, literataRegular, primaryBlack, width} from '../../utils/style.constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: height * 0.013,
-    fontWeight: '700',
+    fontFamily: literataRegular
     
   },
   icon: {

@@ -1,23 +1,29 @@
 import {StyleSheet} from 'react-native';
-import {height, secondaryBlack, width} from '../../utils/style.constants';
+import {height, literataBold, literataRegular, secondaryBlack, violet, width} from '../../utils/style.constants';
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 1,
+    height: '100%',
     width: width * 1,
-    paddingTop: height * 0.05,
     backgroundColor: secondaryBlack,
-    gap: 22
+    gap: 22,
   },
   containerButtons: {
     width: width * 1,
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+  },
+  title: {
+    textAlign: 'center',
+    color: violet,
+    fontSize: height * 0.024,
+    marginBottom: 10,
+    fontFamily: literataBold,
   },
   img: {
     height: height * 0.2,
-    width: width * 0.35
-  }
+    width: width * 0.35,
+  },
 });
 
 export default styles;

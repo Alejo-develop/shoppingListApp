@@ -15,3 +15,9 @@ export const red = '#E50914'
 export const orange = '#F47521'
 
 export const skyBlue = '#7ECFEF'
+
+export const literataRegular = 'Literata_18pt-Regular'
+
+export const literataBold = 'Literata_18pt-Bold'
+
+export const fontTitles = 'Lobster-Regular'

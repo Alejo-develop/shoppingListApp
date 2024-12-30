@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Literata_18pt-Bold.ttf",
+      "sha1": "d0224956a6573bc3cfca31858ea99c6b4fb03c26"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-ExtraBold.ttf",
+      "sha1": "fdcbc38623fbcfcf553fb0a09a65289fb500ff0d"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-ExtraLight.ttf",
+      "sha1": "e16013f2db7de907fcb42f9b5605b6c7d418bcf2"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Italic.ttf",
+      "sha1": "689eb596ad8f2a65a8a771a170810d21efa84dfd"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Light.ttf",
+      "sha1": "009972d1135e8f99f043cd8335aba24bd18fca1f"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Medium.ttf",
+      "sha1": "465bed44599f9fe548939edcfabc00df824cabd0"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Regular.ttf",
+      "sha1": "0d391412e3b944603d76117c545e2577b869d0a2"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-SemiBold.ttf",
+      "sha1": "1ddce43ae5f2087bbcda7660956d9bcbae133bd8"
+    },
+    {
+      "path": "src/assets/fonts/Lobster-Regular.ttf",
+      "sha1": "120c751cd7a77174037c2409ab883ef7efc5edbb"
+    }
+  ]
+}

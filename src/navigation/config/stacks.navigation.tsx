@@ -2,18 +2,17 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/home/home.screen';
 import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
 import MenuScreen from '../../screens/menu/menu.screen';
-import TabIcon from './tab.navigation';
-import LayoutComponent from '../../components/layout/layout.component';
+import CreateCategoryScreen from '../../screens/createCategory/createCategory.screen';
+import MainScreen from '../../screens/main.screen';
 
 const Stack = createNativeStackNavigator();
 
 const Stacks = () => {
   return (
-    <LayoutComponent>
       <Stack.Navigator initialRouteName="main">
         <Stack.Screen
           name="main"
-          component={TabIcon}
+          component={MainScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -31,8 +30,12 @@ const Stacks = () => {
           component={MenuScreen}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="createCategory"
+          component={CreateCategoryScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
-    </LayoutComponent>
   );
 };
 
