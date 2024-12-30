@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     height: 55,
     alignSelf: 'center',
     bottom: 19, 
-    left: width * 0.2,
+    left: width * 0.21, 
   },
   tabBarLabelStyle: {
     fontSize: 0,

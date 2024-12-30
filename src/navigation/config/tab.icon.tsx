@@ -9,16 +9,13 @@ interface TabBarIconProps {
 
 const TabBarIcon: React.FC<TabBarIconProps> = ({routeName, color, size}) => {
   let iconName: string;
-
+  
   switch (routeName) {
-    case 'home':
+    case 'home': 
       iconName = 'home';
       break;
     case 'shopping':
       iconName = 'reorder';
-      break;
-    case 'menu':
-      iconName = 'bars';
       break;
     default:
       iconName = 'plus';
