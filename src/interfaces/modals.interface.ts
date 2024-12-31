@@ -1,5 +1,10 @@
+import { SetStateAction } from "react";
+
 export interface ImgBannerModalProps{
   visibleModal: boolean;
   onClose: () => void;
-  color: string
+  onCloseWithImg?: () => void;
+  color: string;
+  img: string | null;
+  setImg: React.Dispatch<SetStateAction<string | null>>
 }

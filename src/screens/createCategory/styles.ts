@@ -3,11 +3,12 @@ import {height, secondaryBlack, width} from '../../utils/style.constants';
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 1,
+    flexGrow: 1,
+    height: height * 0.85,
     width: width * 1,
     backgroundColor: secondaryBlack,
     alignItems: 'center',
-    gap: 20
+    gap: 20,
   },
   containerFormColors: {
     height: height * 0.09,

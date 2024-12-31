@@ -10,9 +10,10 @@ import { ButtonGenericProps } from '../../interfaces/button.interface';
 const ButtonGenericComponent = ({
   text,
   color,
+  onPress
 }: ButtonGenericProps) => {
   return (
-    <TouchableOpacity style={[style.button, {backgroundColor: color}]}>
+    <TouchableOpacity onPress={onPress} style={[style.button, {backgroundColor: color}]}>
       <Text style={style.text}>{text}</Text>
     </TouchableOpacity>
   );

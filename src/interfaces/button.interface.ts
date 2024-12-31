@@ -9,6 +9,7 @@ export interface ButtonMenuProps {
 export interface ButtonGenericProps{
   text: string;
   color: string
+  onPress?: () => void;
 }
 
 export interface ButtonImgProps{
