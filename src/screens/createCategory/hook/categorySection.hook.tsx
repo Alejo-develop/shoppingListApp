@@ -3,6 +3,7 @@ import {violet} from '../../../utils/style.constants';
 import {CategoryFormInterface} from '../../../interfaces/cateogry.interface';
 import {createCategoryService} from '../../../services/category.services';
 import {useNavigation} from '@react-navigation/native';
+import MessageComponent from '../../../components/message/message.component';
 
 const CategorySectionHook = () => {
   const [color, setColor] = useState<string>(violet);
@@ -32,8 +33,16 @@ const CategorySectionHook = () => {
   };
 
   const handleSubmit = async (form: CategoryFormInterface) => {
-    if(!form.name){      
-      setError('The name is mandatory to create a categorie')
+    if(!form.name){    
+      const erroMsg = 'The name is mandatory to create a categorie' 
+      setError(erroMsg)
+      MessageComponent({
+        type: 'error',
+        text1: 'Error',
+        text2: erroMsg,
+        position: 'top',
+        color: color
+      })
       return
     }
     
@@ -46,11 +55,24 @@ const CategorySectionHook = () => {
     try {
       await createCategoryService(formatedData);
 
-      console.log('Created Succesfully');
       setError('')
+      MessageComponent({
+        type: 'success',
+        text1: 'Categorie created',
+        text2: 'Your item has been successfully created.',
+        position: 'top',
+        color: color
+      })
       navigation.goBack();
     } catch (error) {
-      console.log(error);
+      const errorString = JSON.stringify(error);
+      MessageComponent({
+        type: 'error',
+        text1: 'Error',
+        position: 'top',
+        text2: error ? errorString : 'An error occurred',
+        color: color
+      })
     }
   };
 
@@ -59,6 +81,7 @@ const CategorySectionHook = () => {
     isOpen,
     img,
     form,
+    error,
     setImg,
     handleFormChange,
     setIsOpen,
