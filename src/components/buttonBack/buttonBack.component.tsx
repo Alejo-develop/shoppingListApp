@@ -21,7 +21,8 @@ const ButtonBackComponent = ({color, handleClose}: {color: string, handleClose?:
 const styles = StyleSheet.create({
   icon: {
     fontSize: height * 0.05,
-    right: width * 0.22
+    right: width * 0.25,
+    position: 'relative',
   },
 });
 

@@ -12,7 +12,7 @@ const MenuScreen = () => {
       </Text>
 
       <View style={styles.containerButtons}>
-        <ButtonMenuComponent text="Add new purchase" iconName="cart-plus" route='createCategory' />
+        <ButtonMenuComponent text="Add new purchase" iconName="cart-plus" route='addnewitem' />
         <ButtonMenuComponent text="Add Category" iconName="th-large" route='createCategory' />
       </View>
 

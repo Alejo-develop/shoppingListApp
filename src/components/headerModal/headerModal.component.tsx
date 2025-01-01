@@ -2,7 +2,7 @@ import {Text, View} from 'react-native';
 import ButtonBackComponent from '../buttonBack/buttonBack.component';
 import styles from './style';
 
-const HeaderComponent = ({color, text, hanldeClose}: {color: string, text: string, hanldeClose: () => void}) => {
+const HeaderModalComponent = ({color, text, hanldeClose}: {color: string, text: string, hanldeClose: () => void}) => {
   return (
     <View style={styles.container}>
       <ButtonBackComponent color={color} handleClose={hanldeClose}/>
@@ -12,4 +12,4 @@ const HeaderComponent = ({color, text, hanldeClose}: {color: string, text: strin
   );
 };
 
-export default HeaderComponent;
+export default HeaderModalComponent;

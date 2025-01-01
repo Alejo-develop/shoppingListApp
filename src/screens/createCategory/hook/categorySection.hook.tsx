@@ -70,7 +70,7 @@ const CategorySectionHook = () => {
         type: 'error',
         text1: 'Error',
         position: 'top',
-        text2: error ? errorString : 'An error occurred',
+        text2: error ? errorString : 'An error unexpected occurred',
         color: color
       })
     }

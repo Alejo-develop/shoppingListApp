@@ -12,8 +12,7 @@ const LayoutComponent = ({children}: LayoutProps) => {
   return (
     <View>
       <View style={styles.containerHeader}>
-        <Text style={styles.welcome}>Welcome</Text>
-        <Text style={styles.nameUser}>{user.name}</Text>
+        <Text style={styles.welcome}>Welcome <Text>{user.name}</Text></Text>
       </View>
 
       <View style={styles.children}>{children}</View>

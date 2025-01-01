@@ -16,3 +16,18 @@ export const createCategoryService = async (data: CategoryInterface) => {
    throw error
   }
 };
+
+export const getCategoriesServices = async () => {
+  try {
+    const categories = await AsyncStorage.getItem('categories');
+    if(!categories){
+      throw new Error('Categories not found')
+    }
+
+    const parsedCategories = JSON.parse(categories)
+
+    return parsedCategories
+  } catch (error) {
+    throw error
+  }
+}
