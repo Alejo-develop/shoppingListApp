@@ -11,7 +11,7 @@ const ImgBannerModal = ({
   onClose,
   color,
   setImg,
-  onCloseWithImg
+  onCloseWithImg,
 }: ImgBannerModalProps) => {
   const [imgSelected, setImgSelected] = useState<string | null>(null);
   const handleSelect = (img: string) => {
@@ -41,7 +41,15 @@ const ImgBannerModal = ({
                 <TouchableOpacity
                   onPress={() => handleSelect(item.img)}
                   style={styles.banner}>
-                  <Image style={[styles.img, item.img === imgSelected ? {borderWidth: 2, borderColor: color} : {}]} source={{uri: item.img}} />
+                  <Image
+                    style={[
+                      styles.img,
+                      item.img === imgSelected
+                        ? {borderWidth: 2, borderColor: color}
+                        : {},
+                    ]}
+                    source={{uri: item.img}}
+                  />
                 </TouchableOpacity>
               )}
               numColumns={2}

@@ -59,7 +59,7 @@ const CategorySectionHook = () => {
       MessageComponent({
         type: 'success',
         text1: 'Categorie created',
-        text2: 'Your item has been successfully created.',
+        text2: 'Your categorie has been successfully created.',
         position: 'top',
         color: color
       })

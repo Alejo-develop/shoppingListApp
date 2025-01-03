@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "build project",
         "Menu screen",
-        "Alert Component"
+        "Alert Component",
+        "Add item screen"
     ]
 }

@@ -1,5 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {height, literataBold, primaryBlack, secondaryBlack, width} from '../../utils/style.constants';
+import {
+  height,
+  literataBold,
+  primaryBlack,
+  secondaryBlack,
+  width,
+} from '../../utils/style.constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,19 +19,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: width * 1,
     height: height * 0.79,
-    gap: height * 0.03
+    gap: height * 0.03,
+    paddingBottom: 20
   },
   title: {
-    fontFamily: literataBold
+    fontFamily: literataBold,
   },
   containerAvatars: {
     width: width * 0.9,
-    height: height * 0.3,
+    height: height * 0.28,
     backgroundColor: primaryBlack,
     elevation: 6,
   },
   list: {
-    width: '84%',
+    width: '86%',
     alignItems: 'center',
     gap: height * 0.03,
     marginLeft: 11,
@@ -34,11 +41,11 @@ const styles = StyleSheet.create({
     backgroundColor: primaryBlack,
     height: height * 0.06,
     width: width * 0.1,
-    marginHorizontal: 40,
+    marginHorizontal: width * 0.13,
   },
   img: {
     height: height * 0.07,
-    width: width * 0.16
+    width: width * 0.18,
   },
   form: {
     gap: height * 0.03,

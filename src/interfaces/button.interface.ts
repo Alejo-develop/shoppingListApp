@@ -3,7 +3,9 @@ import React, { SetStateAction } from "react";
 export interface ButtonMenuProps {
   text: string;
   iconName: string;
-  route: string
+  route?: string
+  type?: string
+  onPress?: () => void
 }
 
 export interface ButtonGenericProps{

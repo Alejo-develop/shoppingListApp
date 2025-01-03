@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { height, primaryBlack, width } from '../../utils/style.constants';
+import { fontTitles, height, literataRegular, primaryBlack, width } from '../../utils/style.constants';
 
 const styles = StyleSheet.create({
   dropdown: {
@@ -17,11 +17,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     fontSize: 14,
     color: 'white',
+    fontFamily: fontTitles
   },
   placeholderStyle: {
     fontSize: 16,
     color: primaryBlack,
     borderRadius: 12,
+    fontFamily: fontTitles
   },
   selectedTextStyle: {
     fontSize: 16,
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     fontWeight: '600',
     backgroundColor: primaryBlack,
+    fontFamily: literataRegular
   },
   dropdownContainer: {
     backgroundColor: primaryBlack,

@@ -8,3 +8,8 @@ export interface ImgBannerModalProps{
   img: string | null;
   setImg: React.Dispatch<SetStateAction<string | null>>
 }
+
+export interface InfoUserModalProps{
+  visibleModal: boolean;
+  onClose: () => void;
+}
