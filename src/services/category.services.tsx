@@ -10,7 +10,14 @@ export const createCategoryService = async (data: CategoryInterface) => {
       parsedCategories = JSON.parse(categories);
     }
 
-    parsedCategories.push(data);
+    const formatedData = {
+      ...data,
+      img: data.img || '',
+      id: parsedCategories.length + 1,
+      date: new Date(),
+    };
+
+    parsedCategories.push(formatedData);
     await AsyncStorage.setItem('categories', JSON.stringify(parsedCategories));
   } catch (error) {
    throw error

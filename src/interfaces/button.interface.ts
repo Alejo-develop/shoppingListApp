@@ -22,5 +22,7 @@ export interface ButtonImgProps{
 
 export interface ButtonCategoriePorps{
   img: string; 
-  onPress?: () => void
+  onPress?: () => void;
+  text: string;
+  color: string;
 }

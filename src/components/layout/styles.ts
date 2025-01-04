@@ -4,23 +4,19 @@ import { fontTitles, height,literataRegular,secondaryBlack, violet, width } from
 const styles = StyleSheet.create({
   containerHeader: {
     width: width * 1,
-    height: height * 0.10,
+    height: height * 0.08,
     justifyContent: 'center',
     paddingLeft: width * 0.07,
     paddingTop: height * 0.02,
     backgroundColor: secondaryBlack
   },
   welcome: {
-    fontSize: height * 0.032,
+    fontSize: height * 0.02,
     color: violet,
     fontFamily: fontTitles
   },
-  nameUser: {
-    fontSize: height * 0.020,
-    color: violet,
-  },
   children: {
-    height: height * 0.80,
+    height: height * 0.82,
   }
 });
 

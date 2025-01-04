@@ -11,6 +11,7 @@ import {
 import {createWishServices} from '../../../services/wish.services';
 import {createPurchaseServices} from '../../../services/purchase.services';
 import {useNavigation} from '@react-navigation/native';
+import { useGlobalContext } from '../../../context/global.context';
 
 const SettingsItemHook = () => {
   const [nameCategory, setNameCategory] = useState<string | null>(null);
@@ -31,6 +32,7 @@ const SettingsItemHook = () => {
   });
 
   const navigation = useNavigation();
+  const globalContext = useGlobalContext();
 
   const handleFormChange = (
     field: keyof CreateWishInterface,
@@ -110,6 +112,7 @@ const SettingsItemHook = () => {
           position: 'top',
           color: color,
         });
+        globalContext.changeStatusUpdate(true);
         navigation.goBack();
       } else {
         setError('');
@@ -121,6 +124,7 @@ const SettingsItemHook = () => {
           position: 'top',
           color: color,
         });
+        globalContext.changeStatusUpdate(true);
         navigation.goBack();
       }
     } catch (err) {

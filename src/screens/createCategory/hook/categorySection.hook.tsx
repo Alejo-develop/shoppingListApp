@@ -4,6 +4,7 @@ import {CategoryFormInterface} from '../../../interfaces/cateogry.interface';
 import {createCategoryService} from '../../../services/category.services';
 import {useNavigation} from '@react-navigation/native';
 import MessageComponent from '../../../components/message/message.component';
+import { useGlobalContext } from '../../../context/global.context';
 
 const CategorySectionHook = () => {
   const [color, setColor] = useState<string>(violet);
@@ -13,9 +14,10 @@ const CategorySectionHook = () => {
     name: '',
     description: '',
   });
-  const [error, setError] = useState<string>('')
+  const [error, setError] = useState<string>('');
 
   const navigation = useNavigation();
+  const globalContext = useGlobalContext();
 
   const handleFormChange = (
     field: keyof CategoryFormInterface,
@@ -33,19 +35,19 @@ const CategorySectionHook = () => {
   };
 
   const handleSubmit = async (form: CategoryFormInterface) => {
-    if(!form.name){    
-      const erroMsg = 'The name is mandatory to create a categorie' 
-      setError(erroMsg)
+    if (!form.name) {
+      const erroMsg = 'The name is mandatory to create a categorie';
+      setError(erroMsg);
       MessageComponent({
         type: 'error',
         text1: 'Error',
         text2: erroMsg,
         position: 'top',
-        color: color
-      })
-      return
+        color: color,
+      });
+      return;
     }
-    
+
     const formatedData = {
       ...form,
       color,
@@ -55,14 +57,15 @@ const CategorySectionHook = () => {
     try {
       await createCategoryService(formatedData);
 
-      setError('')
+      setError('');
       MessageComponent({
         type: 'success',
         text1: 'Categorie created',
         text2: 'Your categorie has been successfully created.',
         position: 'top',
-        color: color
-      })
+        color: color,
+      });
+      globalContext.changeStatusUpdate(true);
       navigation.goBack();
     } catch (error) {
       const errorString = JSON.stringify(error);
@@ -71,8 +74,8 @@ const CategorySectionHook = () => {
         text1: 'Error',
         position: 'top',
         text2: error ? errorString : 'An error unexpected occurred',
-        color: color
-      })
+        color: color,
+      });
     }
   };
 
