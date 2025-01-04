@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { View, StyleSheet } from 'react-native';
-import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
+import CategoriesListScreen from '../../screens/categoryList/categoriesList.screen';
 import HomeScreen from '../../screens/home/home.screen';
 import MenuScreen from '../../screens/menu/menu.screen';
 import { height, primaryBlack, violet, width } from '../../utils/style.constants';
@@ -26,7 +26,7 @@ TabIcon = () => (
       tabBarItemStyle: styles.tabBarItemStyle,
       headerShown: false,
     })}>
-    <Tab.Screen name="shopping" component={ShoppingListScreen} />
+    <Tab.Screen name="shopping" component={CategoriesListScreen} />
     <Tab.Screen name="home" component={HomeScreen} />
     <Tab.Screen name="menu" component={MenuScreen} />
   </Tab.Navigator>

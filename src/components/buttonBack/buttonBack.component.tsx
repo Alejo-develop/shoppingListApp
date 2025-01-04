@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet} from 'react-native';
+import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {height, width} from '../../utils/style.constants';
 
-const ButtonBackComponent = ({color, handleClose}: {color: string, handleClose?: () => void}) => {
+const ButtonBackComponent = ({color, customStyles, handleClose}: {color: string, handleClose?: () => void, customStyles?: StyleProp<ViewStyle>}) => {
   const navigate = useNavigation();
 
   const handleSubmit = () => {
@@ -12,18 +12,10 @@ const ButtonBackComponent = ({color, handleClose}: {color: string, handleClose?:
   };
 
   return (
-    <TouchableOpacity onPress={handleClose ? handleClose : handleSubmit}>
-      <Icon style={[styles.icon, {color: color}]} name="angle-left" />
+    <TouchableOpacity style={customStyles} onPress={handleClose ? handleClose : handleSubmit}>
+      <Icon style={[{color: color, fontSize: height * 0.05}]} name="angle-left" />
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  icon: {
-    fontSize: height * 0.05,
-    right: width * 0.25,
-    position: 'relative',
-  },
-});
 
 export default ButtonBackComponent;

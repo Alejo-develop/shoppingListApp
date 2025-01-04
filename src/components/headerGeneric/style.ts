@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: height * 0.029,
     fontFamily: fontTitles
+  },
+  icon: {
+    position: 'absolute',
+    left: 20
   }
 });
 

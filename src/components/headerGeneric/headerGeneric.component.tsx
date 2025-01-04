@@ -5,7 +5,7 @@ import styles from './style';
 const HeaderComponent = ({color, text}: {color: string, text: string}) => {
   return (
     <View style={styles.container}>
-      <ButtonBackComponent color={color} />
+      <ButtonBackComponent color={color} customStyles={styles.icon}/>
 
       <Text style={[styles.title, {color: color}]}>{text}</Text>
     </View>

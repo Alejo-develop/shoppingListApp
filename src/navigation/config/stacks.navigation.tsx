@@ -1,10 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/home/home.screen';
-import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
+import CategoriesListScreen from '../../screens/categoryList/categoriesList.screen';
 import MenuScreen from '../../screens/menu/menu.screen';
 import CreateCategoryScreen from '../../screens/createCategory/createCategory.screen';
 import MainScreen from '../../screens/main.screen';
 import AddNewItemScreen from '../../screens/addPurchaseOrWish/purchaseOrWish.screen';
+import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
+import { violet } from '../../utils/style.constants';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +25,7 @@ const Stacks = () => {
         />
         <Stack.Screen
           name="shopping"
-          component={ShoppingListScreen}
+          component={CategoriesListScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -40,6 +42,12 @@ const Stacks = () => {
           name="addnewitem"
           component={AddNewItemScreen}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="shoppingList"
+          component={ShoppingListScreen}
+          options={{headerShown: false}}
+          initialParams={{ color: violet }}
         />
       </Stack.Navigator>
   );
