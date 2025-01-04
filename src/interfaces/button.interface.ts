@@ -19,3 +19,8 @@ export interface ButtonImgProps{
   setImg: React.Dispatch<SetStateAction<string | null>>
   setIsOpen: React.Dispatch<SetStateAction<boolean>>
 }
+
+export interface ButtonCategoriePorps{
+  img: string; 
+  onPress?: () => void
+}

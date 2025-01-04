@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     width: width * 1,
     backgroundColor: secondaryBlack,
   },
+  list: {
+    width: width * 1,
+    height: 'auto'
+  }
 });
 
 export default styles;

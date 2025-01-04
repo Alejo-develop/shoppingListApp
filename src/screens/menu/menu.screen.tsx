@@ -3,10 +3,11 @@ import styles from './style';
 import ButtonMenuComponent from '../../components/buttonMenu/buttonMenu.component';
 import {img} from '../../utils/img.constants';
 import InfoUserModal from '../../components/infoUserModal/infoUser.modal';
-import { useState } from 'react';
+import UseMenu from './hooks/useMenu.hook';
 
 const MenuScreen = () => {
-  const [isVisible, setIsVisibleModal] = useState<boolean>(false)
+  const {isVisible, form, changeInfoUser, handleFormChange, setIsVisibleModal} =
+    UseMenu();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Menu</Text>
@@ -46,7 +47,12 @@ const MenuScreen = () => {
         style={styles.img}
       />
 
-      <InfoUserModal visibleModal={isVisible} onClose={() => setIsVisibleModal(false)} />
+      <InfoUserModal
+        visibleModal={isVisible}
+        onClose={() => setIsVisibleModal(false)}
+        handleFormChange={handleFormChange}
+        onPress={() => changeInfoUser(form)}
+      />
     </View>
   );
 };

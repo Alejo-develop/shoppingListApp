@@ -1,7 +1,7 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {UserInfoInterface} from '../interfaces/user.interface';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ContextProps} from '../interfaces/context.interface';
+import { findUserServices } from '../services/user.services';
 
 const GlobalContext = createContext<ContextProps>({
   isUpdate: false,
@@ -24,9 +24,9 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
   };
 
   const findInfoUser = async () => {
-    const userFound = await AsyncStorage.getItem('infoUser');
-    if (userFound) {
-      setInfoUser(JSON.parse(userFound));
+    const userFound = await findUserServices()
+    if(userFound) {
+      setInfoUser(userFound);
       return;
     }
 

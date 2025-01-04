@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {CategoryInterface} from '../interfaces/cateogry.interface';
+import {CategoryInterface, CategoryResponseInterface} from '../interfaces/cateogry.interface';
 
 export const createCategoryService = async (data: CategoryInterface) => {
   try {
@@ -24,7 +24,7 @@ export const getCategoriesServices = async () => {
       throw new Error('Categories not found')
     }
 
-    const parsedCategories = JSON.parse(categories)
+    const parsedCategories: CategoryResponseInterface[] = JSON.parse(categories)
 
     return parsedCategories
   } catch (error) {

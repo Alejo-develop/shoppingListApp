@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: height * 0.03,
     marginLeft: 11,
+    height: 'auto',
   },
   containerAvatar: {
     backgroundColor: primaryBlack,

@@ -1,4 +1,4 @@
 export interface UserInfoInterface {
-  name: string | null;
-  email: string | null;
+  name?: string | null;
+  email?: string | null;
 }
