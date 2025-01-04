@@ -35,10 +35,25 @@ export const getPurchasesServices = async () => {
       throw new Error('Purchases not found');
     }
 
-    const parsedPurchases = JSON.parse(purchases);
+    const parsedPurchases: PurchaseResponseInterface[] = JSON.parse(purchases);
 
     return parsedPurchases;
   } catch (error) {
     throw error;
   }
 };
+
+export const getPurchasesByCategorieIdServices = async (id: number) => {
+  try {
+    const purchases = await getPurchasesServices()
+    const filterPurchases = purchases.filter((item) => item.categorieId === id)
+
+    if(!filterPurchases || filterPurchases.length === 0){
+      throw new Error('There is not categories created yet')
+    }
+
+    return filterPurchases
+  } catch (err) {
+    throw err
+  }
+}

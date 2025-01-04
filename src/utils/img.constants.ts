@@ -8,7 +8,7 @@ export const img = {
   piramidHead:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583308/piramidhead_px9mnf.png',
   hoguera:
-    'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583326/hoguera_icuy7k.png',
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736021734/hogueraGif_fqanug.gif',
   artorias:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583332/artorias_ix2chl.png',
 };

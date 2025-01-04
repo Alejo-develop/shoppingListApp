@@ -15,13 +15,13 @@ export const createWishServices = async (data: CreateWishInterface) => {
     const formatedData = {
       ...data,
       id: parsedWish.length + 1,
-      date: new Date()
+      date: new Date(),
     };
 
     parsedWish.push(formatedData);
-    await AsyncStorage.setItem('wish', JSON.stringify(parsedWish))
-    
-    return
+    await AsyncStorage.setItem('wish', JSON.stringify(parsedWish));
+
+    return;
   } catch (err) {
     throw err;
   }
@@ -34,10 +34,26 @@ export const getWishServices = async () => {
       throw new Error('Wish not found');
     }
 
-    const parsedWish = JSON.parse(wishList);
+    const parsedWish: WishResponseInterface[] = JSON.parse(wishList);
 
     return parsedWish;
   } catch (error) {
     throw error;
   }
 };
+
+
+export const getWishByCategorieIdServices = async (id: number) => {
+  try {
+    const wishList = await getWishServices()
+    const filterWish = wishList.filter((item) => item.categorieId === id)
+
+    if(!filterWish){
+      throw new Error('There is not wishes created yet')
+    }
+
+    return filterWish
+  } catch (err) {
+    throw err
+  }
+}

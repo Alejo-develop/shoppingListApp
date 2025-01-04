@@ -16,6 +16,7 @@ const AddNewItemScreen = () => {
     categories,
     color,
     form,
+    setCategorieId,
     createItem,
     handleFormChange,
     setColor,
@@ -49,6 +50,7 @@ const AddNewItemScreen = () => {
             data={categories}
             setName={setNameCategory}
             setColor={setColor}
+            setCategorieId={setCategorieId}
           />
           <InputComponent
             color={color}

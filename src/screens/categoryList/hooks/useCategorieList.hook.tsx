@@ -1,8 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import {CategoryResponseInterface} from '../../../interfaces/cateogry.interface';
 import {useGlobalContext} from '../../../context/global.context';
-import MessageComponent from '../../../components/message/message.component';
-import {violet} from '../../../utils/style.constants';
 import {getCategoriesServices} from '../../../services/category.services';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -10,6 +8,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 interface Props extends NativeStackScreenProps<any, any> {}
 const UseCateogireList = () => {
   const [categories, setCategories] = useState<CategoryResponseInterface[]>([]);
+  const [error, setError] = useState<string>('')
   const globalContext = useGlobalContext();
   const navigation = useNavigation<Props['navigation']>();
 
@@ -20,23 +19,18 @@ const UseCateogireList = () => {
       if (!categories) return;
 
       setCategories(categoriesFound);
+      setError('')
     } catch (err) {
-      const errorString = JSON.stringify(err);
-      MessageComponent({
-        type: 'error',
-        text1: 'Error',
-        position: 'top',
-        text2: err ? errorString : 'An error unexpected occurred',
-        color: violet,
-      });
+      setError("You Don't have categories yet :(")
     }
   };
 
-  const handleSelectCategorie = (id: number, color: string, name: string) => {
+  const handleSelectCategorie = (id: number, color: string, name: string, type: string) => {
     navigation.navigate('shoppingList', {
       id,
       color,
-      name
+      name,
+      type
     });
 
     return
@@ -50,12 +44,14 @@ const UseCateogireList = () => {
 
   useEffect(() => {
     if (globalContext.isUpdate) {
+      getCategories()
       globalContext.changeStatusUpdate(false);
     }
   }, [globalContext.isUpdate]);
 
   return {
     categories,
+    error,
     handleSelectCategorie
   };
 };

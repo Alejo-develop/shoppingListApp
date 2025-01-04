@@ -2,6 +2,7 @@ export interface CreatePurchaseInterface {
   name: string;
   img: string | null;
   categorie: string;
+  categorieId: number;
   price: number;
   description: string;
 }
@@ -11,9 +12,11 @@ export interface PurchaseResponseInterface{
   name: string;
   img: string | null;
   categorie: string;
+  categorieId?: number;
   price: number;
   description: string;
-  date: Date
+  date?: Date
+  formattedDate?: string;
 }
 
 export interface WishResponseInterface{
@@ -21,15 +24,18 @@ export interface WishResponseInterface{
   name: string;
   img: string | null;
   categorie: string;
+  categorieId?: number;
   price: number;
   description: string;
-  date: Date
+  date?: Date;
+  formattedDate?: string;
 }
 
 export interface CreateWishInterface {
   name: string;
   img: string | null;
   categorie: string;
+  categorieId: number;
   price: number;
   description: string;
 }

@@ -3,9 +3,9 @@ import {Dropdown} from 'react-native-element-dropdown';
 import {SelectComponentProps} from '../../interfaces/select.interface';
 import {useState} from 'react';
 import styles from './styles';
-import { literataRegular, primaryBlack, violet } from '../../utils/style.constants';
+import { literataRegular, primaryBlack } from '../../utils/style.constants';
 
-const SelectComponent = ({data, setName, setColor}: SelectComponentProps) => {
+const SelectComponent = ({data, setName, setColor, setCategorieId}: SelectComponentProps) => {
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -28,6 +28,7 @@ const SelectComponent = ({data, setName, setColor}: SelectComponentProps) => {
         onChange={item => {
           setName(item.name);
           setColor(item.color)
+          setCategorieId(item.id)
         }}
       />
     </View>

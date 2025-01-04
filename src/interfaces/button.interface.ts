@@ -26,3 +26,14 @@ export interface ButtonCategoriePorps{
   text: string;
   color: string;
 }
+
+export interface ButtonPurchaseCardProps{
+  id: number;
+  title: string,
+  img?: string,
+  color: string;
+  categorie: string;
+  price: number;
+  description?: string;
+  date: string;
+}

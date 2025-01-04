@@ -1,5 +1,6 @@
 import {SetStateAction} from 'react';
 import {UserInfoInterface} from './user.interface';
+import { PurchaseResponseInterface, WishResponseInterface } from './item.interface';
 
 export interface ImgBannerModalProps {
   visibleModal: boolean;
@@ -15,4 +16,10 @@ export interface InfoUserModalProps {
   onClose: () => void;
   onPress: () => void;
   handleFormChange: (field: keyof UserInfoInterface, value: string) => void;
+}
+
+export interface InfoItemModalProps{
+  visibleModal: boolean;
+  onClose: () => void;
+  item: PurchaseResponseInterface | WishResponseInterface
 }

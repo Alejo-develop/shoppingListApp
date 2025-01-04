@@ -20,6 +20,7 @@ const SettingsItemHook = () => {
   >([]);
   const [imgSelected, setImg] = useState<string | null>(null);
   const [color, setColor] = useState<string>(violet);
+  const [categorieId, setCategorieId] = useState<number>(0)
   const [error, setError] = useState<string>('');
   const [form, setForm] = useState<
     CreatePurchaseInterface | CreateWishInterface
@@ -27,6 +28,7 @@ const SettingsItemHook = () => {
     name: '',
     img: '',
     categorie: '',
+    categorieId: 0,
     price: 0,
     description: '',
   });
@@ -64,6 +66,7 @@ const SettingsItemHook = () => {
   };
 
   const createItem = async ({item, type}: createItemInterface) => {
+    console.log('Creating item:', item);
     if (!item.name) {
       MessageComponent({
         type: 'error',
@@ -84,7 +87,7 @@ const SettingsItemHook = () => {
       });
       return;
     }
-    if (!item.img) {
+    if (!imgSelected) {
       MessageComponent({
         type: 'error',
         text1: 'Error',
@@ -97,9 +100,10 @@ const SettingsItemHook = () => {
 
     const formatedItem = {
       ...item,
+      categorieId: categorieId,
       img: imgSelected,
       categorie: nameCategory || 'defaultCategory',
-    };
+    };    
 
     try {
       if (type === 'wish') {
@@ -155,6 +159,7 @@ const SettingsItemHook = () => {
     createItem,
     setNameCategory,
     getCategories,
+    setCategorieId
   };
 };
 
