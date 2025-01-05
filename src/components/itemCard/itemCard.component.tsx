@@ -15,20 +15,13 @@ const ItemCardComponent = ({
   description,
 }: ButtonPurchaseCardProps) => {
   const [isVisibleModal, setVisibleModal] = useState<boolean>(false);
-  const formatedInfo = {
-    img: img ? img : '',
-    id,
-    color,
-    title,
-    categorie,
-    date,
-    price,
-    description,
-  };
 
   return (
     <View>
-      <TouchableOpacity style={styles.button} key={id}>
+      <TouchableOpacity
+        style={styles.button}
+        key={id}
+        onPress={() => setVisibleModal(true)}>
         <View style={styles.containerImage}>
           <Image style={styles.img} source={{uri: img}} />
         </View>
@@ -44,6 +37,7 @@ const ItemCardComponent = ({
       <InfoCardModal
         visibleModal={isVisibleModal}
         onClose={() => setVisibleModal(false)}
+        color={color}
         item={{
           id,
           name: title,
