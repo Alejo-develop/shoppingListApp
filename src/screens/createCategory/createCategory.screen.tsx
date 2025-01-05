@@ -1,8 +1,4 @@
-import {
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
 import HeaderComponent from '../../components/headerGeneric/headerGeneric.component';
 import CategorySectionHook from './hook/categorySection.hook';
@@ -33,52 +29,54 @@ const CreateCategoryScreen = () => {
       keyboardShouldPersistTaps="handled">
       <HeaderComponent color={color} text="Create Category" />
 
-      <ButtonImg img={img} setImg={setImg} setIsOpen={setIsOpen} />
+      <View style={{alignItems: 'center',gap: 25}}>
+        <ButtonImg img={img} setImg={setImg} setIsOpen={setIsOpen} />
 
-      <View style={styles.containerFormColors}>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontFamily: fontTitles,
-            fontSize: height * 0.017,
-            color: color,
-          }}>
-          Select color
-        </Text>
-        <ColorsContainer onChange={setColor} />
-      </View>
+        <View style={styles.containerFormColors}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontFamily: fontTitles,
+              fontSize: height * 0.017,
+              color: color,
+            }}>
+            Select color
+          </Text>
+          <ColorsContainer onChange={setColor} />
+        </View>
 
-      <View style={{gap: height * 0.03}}>
-        <InputComponent
+        <View style={{gap: height * 0.03}}>
+          <InputComponent
+            color={color}
+            placeholder="Name of Category..."
+            entry={false}
+            onChangeText={text => handleFormChange('name', text)}
+            value="Name"
+          />
+          <InputComponent
+            color={color}
+            placeholder="Description..."
+            entry={false}
+            value="Description"
+            onChangeText={text => handleFormChange('description', text)}
+          />
+        </View>
+
+        <ButtonGenericComponent
+          text="Create"
           color={color}
-          placeholder="Name of Category..."
-          entry={false}
-          onChangeText={text => handleFormChange('name', text)}
-          value='Name'
+          onPress={() => handleSubmit(form)}
         />
-        <InputComponent
+
+        <ImgBannerModal
+          visibleModal={isOpen}
+          onClose={onClose}
           color={color}
-          placeholder="Description..."
-          entry={false}
-           value='Description'
-          onChangeText={text => handleFormChange('description', text)}
+          setImg={setImg}
+          img={img}
+          onCloseWithImg={() => setIsOpen(false)}
         />
       </View>
-
-      <ButtonGenericComponent
-        text="Create"
-        color={color}
-        onPress={() => handleSubmit(form)}
-      />
-
-      <ImgBannerModal
-        visibleModal={isOpen}
-        onClose={onClose}
-        color={color}
-        setImg={setImg}
-        img={img}
-        onCloseWithImg={() => setIsOpen(false)}
-      />
     </ScrollView>
   );
 };

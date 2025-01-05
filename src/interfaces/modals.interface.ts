@@ -22,5 +22,6 @@ export interface InfoItemModalProps{
   visibleModal: boolean;
   onClose: () => void;
   item: PurchaseResponseInterface | WishResponseInterface;
-  color: string
+  color: string;
+  type: string
 }

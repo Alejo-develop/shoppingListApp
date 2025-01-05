@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     height: height * 0.85,
     width: width * 1,
     backgroundColor: secondaryBlack,
-    alignItems: 'center',
     gap: 20,
   },
   containerFormColors: {

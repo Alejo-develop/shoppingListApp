@@ -8,12 +8,14 @@ import {
 } from '../../../utils/style.constants';
 import ButtonGenericComponent from '../../buttonGeneric/buttonGeneric.component';
 import CardInfoDetailComponent from './cardInfo.component';
+import ButtonTypeWishComponent from './buttonsTypeWish.component';
 
 const InfoCardModal = ({
   item,
   color,
   visibleModal,
   onClose,
+  type,
 }: InfoItemModalProps) => {
   return (
     <Modal
@@ -22,7 +24,7 @@ const InfoCardModal = ({
       transparent={true}
       animationType="slide">
       <View style={styles.container}>
-        <View style={styles.modal}>
+        <View style={type != 'wish' ? styles.modal : styles.modalWish}>
           <View style={[styles.header, {backgroundColor: color}]}>
             <View
               style={[
@@ -38,6 +40,13 @@ const InfoCardModal = ({
 
           <View style={styles.body}>
             <Text style={styles.name}>{item.name}</Text>
+
+            {type != 'wish' ? null : (
+              <View style={{flexDirection: 'row', gap: 40}}>
+                <ButtonTypeWishComponent icon='check' color={color} text='Purchased'/>
+                <ButtonTypeWishComponent icon='trash-o' color={color} text='Delete'/>
+              </View>
+            )}
 
             <View style={styles.containerCardInfo}>
               <CardInfoDetailComponent
@@ -58,9 +67,12 @@ const InfoCardModal = ({
             </View>
 
             <View style={styles.containerDescription}>
-              <Text style={{fontFamily: literataBold, textAlign: 'center',
-                fontSize: 11
-              }}>
+              <Text
+                style={{
+                  fontFamily: literataBold,
+                  textAlign: 'center',
+                  fontSize: 11,
+                }}>
                 {item.description
                   ? item.description
                   : "This item Doesn't have description"}
@@ -87,6 +99,13 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: primaryBlack,
     height: height * 0.66,
+    width: width * 1,
+    elevation: 12,
+    alignItems: 'center',
+  },
+  modalWish: {
+    backgroundColor: primaryBlack,
+    height: height * 0.73,
     width: width * 1,
     elevation: 12,
     alignItems: 'center',

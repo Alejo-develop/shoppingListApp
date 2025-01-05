@@ -2,11 +2,10 @@ import {FlatList, Image, Text, View} from 'react-native';
 import styles from './styles';
 import UseCateogireList from './hooks/useCategorieList.hook';
 import ButtonCategorieComponent from '../../components/buttonCategorie/buttonCategorie.component';
-import {literataRegular} from '../../utils/style.constants';
 import {img} from '../../utils/img.constants';
 
 const CategoriesListScreen = () => {
-  const {categories, error, handleSelectCategorie} = UseCateogireList();
+  const {categories, error,  handleSelectCategorie} = UseCateogireList();
 
   return (
     <View style={styles.container}>
@@ -32,7 +31,7 @@ const CategoriesListScreen = () => {
                 text={item.name}
                 color={item.color}
                 onPress={() =>
-                  handleSelectCategorie(item.id, item.color, item.name, 'purchases')
+                  handleSelectCategorie(item.id, item.color, item.name, 'purchase')
                 }
               />
             )}

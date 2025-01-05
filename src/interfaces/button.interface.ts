@@ -36,4 +36,5 @@ export interface ButtonPurchaseCardProps{
   price: number;
   description?: string;
   date: string;
+  itemType: string;
 }

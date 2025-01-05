@@ -6,6 +6,7 @@ import {
 } from '../../../interfaces/item.interface';
 import {getPurchasesByCategorieIdServices} from '../../../services/purchase.services';
 import {useGlobalContext} from '../../../context/global.context';
+import {getWishByCategorieIdServices} from '../../../services/wish.services';
 
 type RootStackParamList = {
   shoppingList: {color: string; id: number; name: string; type: string};
@@ -17,9 +18,10 @@ const UseShoppingList = () => {
 
   const [categorieColor, setCategorieColor] = useState<string>(color);
   const [items, setItems] = useState<
-    PurchaseResponseInterface[] | WishResponseInterface[]
+    PurchaseResponseInterface[] | WishResponseInterface[] | undefined
   >([]);
   const [error, setError] = useState<string>('');
+  const [itemType, setItemType] = useState<string>(type);
 
   const globalContext = useGlobalContext();
 
@@ -41,47 +43,83 @@ const UseShoppingList = () => {
 
       if (!purchasesFound || purchasesFound.length === 0) {
         setError('There is not purchases created yet :(');
+        return;
       }
 
       const formattedPurchases = purchasesFound.map(purchase => ({
         ...purchase,
-        formattedDate: formatDate(new Date(purchase.date).toISOString()),
+        formattedDate: formatDate(
+          new Date(purchase.date ? purchase.date : '').toISOString(),
+        ),
       }));
 
-      setItems(formattedPurchases.reverse())
       setError('');
+      return formattedPurchases.reverse();
     } catch (err) {
-      setError('A unexpected error ocurred');
+      console.log(err);
+
+      setError('An unexpected error occurred');
     }
   };
 
-  const getItem = async (type: string, idCategorie: number) => {
-    if (type === 'purchases') {
-      await getPurchases(idCategorie);
-    } else {
-      console.log('wish');
+  const getWishes = async (idCategorie: number) => {
+    try {
+      const wishesFound = await getWishByCategorieIdServices(idCategorie);
+
+      if (!wishesFound || wishesFound.length === 0) {
+        setError('There is not wishes created yet :(');
+        return;
+      }
+
+      const formattedWishes = wishesFound.map(wish => ({
+        ...wish,
+        formattedDate: formatDate(
+          new Date(wish.date ? wish.date : '').toISOString(),
+        ),
+      }));
+
+      setError('');
+      return formattedWishes.reverse();
+    } catch (err) {
+      if (typeof err === 'string') setError(err);
     }
-    return;
+  };
+
+  const getItem = async (idCategorie: number, type: string) => {
+    let items_;
+    if (type === 'purchase') {
+      items_ = await getPurchases(idCategorie);
+    } else {
+      items_ = await getWishes(idCategorie);
+    }
+    setItems(items_);
+    return items_;
   };
 
   useEffect(() => {
     if (globalContext.isUpdate) {
-      getItem(type, id);
+      getItem(id, itemType);
       globalContext.changeStatusUpdate(false);
     }
-  }, [globalContext.isUpdate]);
+  }, [globalContext.isUpdate, itemType]);
 
   useFocusEffect(
     useCallback(() => {
-      getItem(type, id);
-    }, [type, id]),
+      getItem(id, itemType);
+    }, [type, id, itemType]),
   );
+
+  const handleButtonPress = (type: string) => {
+    setItemType(type);
+  };
 
   return {
     categorieColor,
     name,
     items,
     error,
+    itemType,
+    handleButtonPress,
   };
 };
 

@@ -48,7 +48,7 @@ export const getPurchasesByCategorieIdServices = async (id: number) => {
     const purchases = await getPurchasesServices()
     const filterPurchases = purchases.filter((item) => item.categorieId === id)
 
-    if(!filterPurchases || filterPurchases.length === 0){
+    if(!filterPurchases){
       throw new Error('There is not categories created yet')
     }
 

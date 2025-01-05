@@ -11,6 +11,10 @@ export const img = {
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736021734/hogueraGif_fqanug.gif',
   artorias:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583332/artorias_ix2chl.png',
+  perro2:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736111615/perro2_ikrfgs.webp',
+  perro1:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736111611/perro_1_buphhv.gif',
 };
 
 export const bannersCategory = [

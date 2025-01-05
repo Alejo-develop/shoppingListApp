@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingBottom: 24
   },
+  statusText: {
+    fontFamily: literataRegular,
+    fontSize: 10,
+  }
 });
 
 export default styles;

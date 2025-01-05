@@ -13,6 +13,7 @@ const ItemCardComponent = ({
   date,
   price,
   description,
+  itemType
 }: ButtonPurchaseCardProps) => {
   const [isVisibleModal, setVisibleModal] = useState<boolean>(false);
 
@@ -31,6 +32,7 @@ const ItemCardComponent = ({
         </View>
         <View style={styles.containerPrice}>
           <Text style={styles.price}>${price} COP</Text>
+          {itemType === 'wish' ? <Text style={[styles.statusText, {color: color}]}>Status: Pending</Text> : null}
         </View>
       </TouchableOpacity>
 
@@ -38,6 +40,7 @@ const ItemCardComponent = ({
         visibleModal={isVisibleModal}
         onClose={() => setVisibleModal(false)}
         color={color}
+        type={itemType}
         item={{
           id,
           name: title,
