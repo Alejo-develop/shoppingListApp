@@ -4,12 +4,22 @@ import UseShoppingList from './hooks/useShoppingList.hook';
 import HeaderComponent from '../../components/headerGeneric/headerGeneric.component';
 import ItemCardComponent from '../../components/itemCard/itemCard.component';
 import ButtonShopingListScreen from './components/buttonShoppingList.component';
-import { img } from '../../utils/img.constants';
+import {img} from '../../utils/img.constants';
+import InfoCategorieModal from '../../components/infoCategorieModal/infoCategorie.modal';
 
 const ShoppingListScreen = () => {
-  const {categorieColor, name, items, error, itemType, focused, handleButtonPress} =
-    UseShoppingList();
-
+  const {
+    categorieColor,
+    name,
+    items,
+    error,
+    itemType,
+    focused,
+    categorie,
+    isModalInfoVisible,
+    onCloseModal,
+    handleButtonPress,
+  } = UseShoppingList();
 
   return (
     <View style={styles.container}>
@@ -28,10 +38,19 @@ const ShoppingListScreen = () => {
           onPress={() => handleButtonPress('wish')}
           isFocused={focused === 'wish'}
         />
+        <ButtonShopingListScreen
+          text="Settings"
+          color={categorieColor}
+          onPress={() => handleButtonPress('settings')}
+          isFocused={focused === 'settings'}
+        />
       </View>
       {error || items?.length === 0 ? (
         <View style={styles.containerError}>
-          <Image source={{uri: itemType === 'purchase' ? img.perro1 : img.perro2}} style={styles.imgError}/>
+          <Image
+            source={{uri: itemType === 'purchase' ? img.perro1 : img.perro2}}
+            style={styles.imgError}
+          />
           <Text style={styles.textError}>{error}</Text>
         </View>
       ) : (
@@ -56,6 +75,12 @@ const ShoppingListScreen = () => {
               />
             )}
             numColumns={1}
+          />
+
+          <InfoCategorieModal 
+          visibleModal={isModalInfoVisible}
+          onClose={onCloseModal}
+          categorie={categorie}
           />
         </View>
       )}

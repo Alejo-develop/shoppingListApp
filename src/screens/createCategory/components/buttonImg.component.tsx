@@ -1,14 +1,14 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ImageStyle, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {ButtonImgProps} from '../../../interfaces/button.interface';
 import {height, literataRegular, primaryBlack, width} from '../../../utils/style.constants';
 
-const ButtonImg = ({img, setIsOpen}: ButtonImgProps) => {
+const ButtonImg = ({img, customStylesButton, customStylesImg, customStylesText, setIsOpen}: ButtonImgProps) => {
   return (
-    <TouchableOpacity onPress={() => setIsOpen(true)} style={styles.button}>
+    <TouchableOpacity onPress={() => setIsOpen(true)} style={customStylesButton ? customStylesButton : styles.button}>
       {img != null ? (
-        <Image style={styles.img} source={{uri: img}} />
+        <Image style={customStylesImg ? (customStylesImg as ImageStyle) : styles.img} source={{uri: img}} />
       ) : (
-        <Text style={styles.text}>Choose Img</Text>
+        <Text style={customStylesText ? customStylesText :styles.text}>Choose Img</Text>
       )}
     </TouchableOpacity>
   );

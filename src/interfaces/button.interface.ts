@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { StyleProp, ViewStyle } from "react-native";
 
 export interface ButtonMenuProps {
   text: string;
@@ -18,6 +19,9 @@ export interface ButtonImgProps{
   img: string | null,
   setImg: React.Dispatch<SetStateAction<string | null>>
   setIsOpen: React.Dispatch<SetStateAction<boolean>>
+  customStylesButton?: StyleProp<ViewStyle>
+  customStylesImg?: StyleProp<ViewStyle>
+  customStylesText?: StyleProp<ViewStyle>
 }
 
 export interface ButtonCategoriePorps{

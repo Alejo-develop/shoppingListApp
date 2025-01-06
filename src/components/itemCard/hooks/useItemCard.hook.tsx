@@ -11,8 +11,6 @@ const UseItemCard = (id: number, color: string, item: PurchaseResponseInterface)
 
   const deleteItem = async () => {
     try {
-      console.log('id', id);
-      
       await deletedWishService(id)
       
       globalContext.changeStatusUpdate(true);

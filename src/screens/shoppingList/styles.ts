@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: width * 0.2,
+    gap: width * 0.1,
     height: height * 0.05,
   },
   list: {

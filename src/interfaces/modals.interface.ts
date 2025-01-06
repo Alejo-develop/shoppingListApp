@@ -1,6 +1,7 @@
 import {SetStateAction} from 'react';
 import {UserInfoInterface} from './user.interface';
 import { PurchaseResponseInterface, WishResponseInterface } from './item.interface';
+import { CategoryResponseInterface } from './cateogry.interface';
 
 export interface ImgBannerModalProps {
   visibleModal: boolean;
@@ -26,4 +27,10 @@ export interface InfoItemModalProps{
   onClose: () => void;
   deleteWish: () => void;
   changeToPurchased: () => void 
+}
+
+export interface ModalInfoCategorieProps{
+  visibleModal: boolean;
+  onClose: () => void;
+  categorie: CategoryResponseInterface
 }

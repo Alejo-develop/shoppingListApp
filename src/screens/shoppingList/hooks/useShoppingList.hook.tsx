@@ -7,6 +7,11 @@ import {
 import {getPurchasesByCategorieIdServices} from '../../../services/purchase.services';
 import {useGlobalContext} from '../../../context/global.context';
 import {getWishByCategorieIdServices} from '../../../services/wish.services';
+import {CategoryResponseInterface} from '../../../interfaces/cateogry.interface';
+import {
+  getCategorieByIdServices,
+} from '../../../services/category.services';
+import MessageComponent from '../../../components/message/message.component';
 
 type RootStackParamList = {
   shoppingList: {color: string; id: number; name: string; type: string};
@@ -16,15 +21,25 @@ const UseShoppingList = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'shoppingList'>>();
   const {color, id, name, type} = route.params;
 
+  const [categorie, setCategorie] = useState<CategoryResponseInterface>({
+    id: 0,
+    name: '',
+    color: '',
+    description: '',
+    img: '',
+  });
   const [categorieColor, setCategorieColor] = useState<string>(color);
   const [items, setItems] = useState<
     PurchaseResponseInterface[] | WishResponseInterface[] | undefined
   >([]);
   const [error, setError] = useState<string>('');
   const [itemType, setItemType] = useState<string>(type);
-  const [focused, setFocused] = useState<string>(type)
+  const [focused, setFocused] = useState<string>(type);
+  const [isModalInfoVisible, setModalInfoVisible] = useState<boolean>(false);
 
   const globalContext = useGlobalContext();
+
+  //Methods for the operations Crud
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -34,6 +49,30 @@ const UseShoppingList = () => {
       day: 'numeric',
     };
     return date.toLocaleDateString('es-ES', options);
+  };
+
+  const onCloseModal = () => {
+    setModalInfoVisible(false)
+    setItemType('purchase')
+    setFocused('purchase')
+  }
+
+  //Crud
+
+  const getCategorie = async () => {
+    try {
+      const categorie = await getCategorieByIdServices(id);
+
+      setCategorie(categorie);
+    } catch (err) {
+      MessageComponent({
+        type: 'error',
+        text1: 'Error',
+        position: 'top',
+        color: color,
+        text2: 'Categorie ifno not found'
+      })
+    }
   };
 
   const getPurchases = async (idCategorie: number) => {
@@ -87,18 +126,26 @@ const UseShoppingList = () => {
   };
 
   const getItem = async (idCategorie: number, type: string) => {
+    await getCategorie()
+    
     let items_;
     if (type === 'purchase') {
       items_ = await getPurchases(idCategorie);
-    } else {
+    }
+    
+    if (type === 'wish') {
       items_ = await getWishes(idCategorie);
     }
+    if(type === 'settings') {
+      setModalInfoVisible(true);
+    }
+
     setItems(items_);
     return items_;
   };
 
   useEffect(() => {
-    if (globalContext.isUpdate) {  
+    if (globalContext.isUpdate) {
       getItem(id, itemType);
       globalContext.changeStatusUpdate(false);
     }
@@ -111,7 +158,7 @@ const UseShoppingList = () => {
   );
 
   const handleButtonPress = (type: string) => {
-    setFocused(type)
+    setFocused(type);
     setItemType(type);
   };
 
@@ -122,7 +169,10 @@ const UseShoppingList = () => {
     error,
     itemType,
     focused,
+    isModalInfoVisible,
+    categorie,
     handleButtonPress,
+    onCloseModal
   };
 };
 
