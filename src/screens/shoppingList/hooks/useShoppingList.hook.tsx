@@ -8,9 +8,7 @@ import {getPurchasesByCategorieIdServices} from '../../../services/purchase.serv
 import {useGlobalContext} from '../../../context/global.context';
 import {getWishByCategorieIdServices} from '../../../services/wish.services';
 import {CategoryResponseInterface} from '../../../interfaces/cateogry.interface';
-import {
-  getCategorieByIdServices,
-} from '../../../services/category.services';
+import {getCategorieByIdServices} from '../../../services/category.services';
 import MessageComponent from '../../../components/message/message.component';
 
 type RootStackParamList = {
@@ -52,17 +50,18 @@ const UseShoppingList = () => {
   };
 
   const onCloseModal = () => {
-    setModalInfoVisible(false)
-    setItemType('purchase')
-    setFocused('purchase')
-  }
+    setModalInfoVisible(false);
+    setItemType('purchase');
+    setFocused('purchase');
+  };
 
   //Crud
 
   const getCategorie = async () => {
     try {
       const categorie = await getCategorieByIdServices(id);
-
+      console.log(categorie);
+      
       setCategorie(categorie);
     } catch (err) {
       MessageComponent({
@@ -70,8 +69,8 @@ const UseShoppingList = () => {
         text1: 'Error',
         position: 'top',
         color: color,
-        text2: 'Categorie ifno not found'
-      })
+        text2: 'Categorie ifno not found',
+      });
     }
   };
 
@@ -126,17 +125,17 @@ const UseShoppingList = () => {
   };
 
   const getItem = async (idCategorie: number, type: string) => {
-    await getCategorie()
-    
+    await getCategorie();
+
     let items_;
     if (type === 'purchase') {
       items_ = await getPurchases(idCategorie);
     }
-    
+
     if (type === 'wish') {
       items_ = await getWishes(idCategorie);
     }
-    if(type === 'settings') {
+    if (type === 'settings') {
       setModalInfoVisible(true);
     }
 
@@ -149,17 +148,23 @@ const UseShoppingList = () => {
       getItem(id, itemType);
       globalContext.changeStatusUpdate(false);
     }
-  }, [globalContext.isUpdate, itemType]);
+  }, [globalContext.isUpdate, itemType, id]);
 
   useFocusEffect(
     useCallback(() => {
       getItem(id, itemType);
-    }, [type, id, itemType]),
+    }, [id, itemType]),
   );
 
-  const handleButtonPress = (type: string) => {
+  const handleButtonPress = async (type: string) => {
     setFocused(type);
     setItemType(type);
+    if (type === 'settings') {
+      setModalInfoVisible(true);
+      await getCategorie()
+    } else {
+      setModalInfoVisible(false);
+    }
   };
 
   return {
@@ -172,7 +177,7 @@ const UseShoppingList = () => {
     isModalInfoVisible,
     categorie,
     handleButtonPress,
-    onCloseModal
+    onCloseModal,
   };
 };
 

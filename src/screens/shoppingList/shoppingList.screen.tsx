@@ -76,14 +76,13 @@ const ShoppingListScreen = () => {
             )}
             numColumns={1}
           />
-
-          <InfoCategorieModal 
-          visibleModal={isModalInfoVisible}
-          onClose={onCloseModal}
-          categorie={categorie}
-          />
         </View>
       )}
+      <InfoCategorieModal
+        visibleModal={isModalInfoVisible}
+        onClose={onCloseModal}
+        categorie={categorie}
+      />
     </View>
   );
 };

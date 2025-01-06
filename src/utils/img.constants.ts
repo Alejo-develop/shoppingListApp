@@ -15,6 +15,8 @@ export const img = {
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736111615/perro2_ikrfgs.webp',
   perro1:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736111611/perro_1_buphhv.gif',
+  almaDeCeniza:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736190046/alma_de_ceniza_ql6dic.png',
 };
 
 export const bannersCategory = [

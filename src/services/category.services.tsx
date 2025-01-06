@@ -74,7 +74,7 @@ export const updateCategoryService = async (
   try {
     const categories = await AsyncStorage.getItem('categories');
     if (!categories) {
-      throw new Error('Categorías no encontradas');
+      throw new Error('Categories not found');
     }
     const parsedCategories: CategoryResponseInterface[] = JSON.parse(categories);
     
@@ -82,7 +82,7 @@ export const updateCategoryService = async (
       category => category.id === id,
     );
     if (categoryIndex === -1) {
-      throw new Error('Categoría no encontrada');
+      throw new Error('Categorie not found');
     }
     
     const updatedCategory = {

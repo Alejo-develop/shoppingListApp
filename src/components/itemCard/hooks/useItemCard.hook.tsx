@@ -5,7 +5,7 @@ import { PurchaseResponseInterface } from "../../../interfaces/item.interface";
 import { wishToPurchasedServices } from "../../../services/purchase.services";
 import { useGlobalContext } from "../../../context/global.context";
 
-const UseItemCard = (id: number, color: string, item: PurchaseResponseInterface) => {
+const UseItemCard = (id: number, color: string, item: PurchaseResponseInterface) => {  
   const [isVisibleModal, setVisibleModal] = useState<boolean>(false);
   const globalContext = useGlobalContext();
 

@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     position: 'absolute',
     backgroundColor: primaryBlack,
-    width: width * 0.6, 
+    width: width * 1, 
     height: 55,
     alignSelf: 'center',
-    bottom: 19, 
-    left: width * 0.21, 
+    bottom: 17, 
+    borderWidth: 0,
+    borderColor: primaryBlack
   },
   tabBarLabelStyle: {
     fontSize: 0,

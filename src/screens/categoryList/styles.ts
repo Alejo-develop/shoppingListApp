@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   containerCategories: {
     width: width * 1,
-    height: height * 0.93,
+    height: height * 0.96,
     marginTop: height * 0.01,
     alignItems: 'center',
     zIndex: 2,

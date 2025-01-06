@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: fontTitles
   },
   children: {
-    height: height * 0.82,
+    height: height * 0.84,
   }
 });
 

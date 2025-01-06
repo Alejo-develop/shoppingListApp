@@ -1,16 +1,16 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   CategoryFormInterface,
   CategoryResponseInterface,
 } from '../../../interfaces/cateogry.interface';
 import {useGlobalContext} from '../../../context/global.context';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import MessageComponent from '../../message/message.component';
-import { updateCategoryService } from '../../../services/category.services';
+import {updateCategoryService} from '../../../services/category.services';
 
 const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
   const [imgSelected, setImgSelected] = useState<string | null>(
-    categorie.img ? categorie.img : null,
+    categorie.img ? categorie.img : '',
   );
   const [form, setForm] = useState<CategoryFormInterface>({
     name: '',
@@ -18,8 +18,8 @@ const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
   });
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
   const [color, setColor] = useState<string>(categorie.color);
-  
-  const navigation = useNavigation()
+
+  const navigation = useNavigation();
   const globalContext = useGlobalContext();
 
   const handleFormChange = (
@@ -33,22 +33,26 @@ const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
   };
 
   const changeInfoCategorie = async (form: CategoryFormInterface) => {
-    if(!form.name && !form.description && imgSelected === categorie.img && color === categorie.color){
-      setIsVisibleModal(false)
-      return
+    const hasChanges =
+      form.name !== categorie.name ||
+      form.description !== categorie.description ||
+      imgSelected !== categorie.img ||
+      color !== categorie.color;
+    if (!hasChanges) {
+      setIsVisibleModal(false);
+      return;
     }
 
-    const formatedData = {
+    const formattedData = {
       ...form,
-      name: form.name ? form.name: categorie.name,
-      description: form.description ? form.description : categorie.description ,
+      name: form.name ? form.name : categorie.name,
+      description: form.description ? form.description : categorie.description,
       color,
       img: imgSelected,
     };
 
     try {
-
-      await updateCategoryService(categorie.id, formatedData)
+      await updateCategoryService(categorie.id, formattedData);
 
       MessageComponent({
         type: 'success',
@@ -69,6 +73,11 @@ const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
       });
     }
   };
+
+  useEffect(() => {
+    setColor(categorie.color);
+    setImgSelected(categorie.img ? categorie.img : '');
+  }, [categorie]);
 
   return {
     imgSelected,

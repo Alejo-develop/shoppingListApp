@@ -59,7 +59,7 @@ const InfoCategorieModal = ({
           />
 
           <ButtonImg
-            img={imgSelected ? imgSelected : ''}
+            img={imgSelected}
             setIsOpen={setIsVisibleModal}
             setImg={setImgSelected}
             customStylesButton={styles.button}
@@ -82,14 +82,14 @@ const InfoCategorieModal = ({
 
           <View style={{alignItems: 'center', gap: 25, top: 25}}>
             <InputComponent
-              color={color}
+              color={categorie.color}
               entry={true}
               placeholder={`${categorie.name}...`}
               value="Name"
               onChangeText={text => handleFormChange('name', text)}
             />
             <InputComponent
-              color={color}
+              color={categorie.color}
               entry={true}
               value="Description"
               placeholder={`Change description...`}
