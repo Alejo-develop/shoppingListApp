@@ -7,8 +7,10 @@ import ButtonShopingListScreen from './components/buttonShoppingList.component';
 import { img } from '../../utils/img.constants';
 
 const ShoppingListScreen = () => {
-  const {categorieColor, name, items, error, itemType, handleButtonPress} =
+  const {categorieColor, name, items, error, itemType, focused, handleButtonPress} =
     UseShoppingList();
+
+
   return (
     <View style={styles.container}>
       <HeaderComponent color={categorieColor} text={name} />
@@ -18,11 +20,13 @@ const ShoppingListScreen = () => {
           text="Purchases"
           color={categorieColor}
           onPress={() => handleButtonPress('purchase')}
+          isFocused={focused === 'purchase'}
         />
         <ButtonShopingListScreen
           text="Wishes"
           color={categorieColor}
           onPress={() => handleButtonPress('wish')}
+          isFocused={focused === 'wish'}
         />
       </View>
       {error || items?.length === 0 ? (
@@ -38,10 +42,12 @@ const ShoppingListScreen = () => {
             renderItem={({item}) => (
               <ItemCardComponent
                 categorie={item.categorie}
+                categorieId={item.categorieId ? item.categorieId : 0}
                 color={categorieColor}
                 id={item.id}
-                date={item.formattedDate ? item.formattedDate : ''}
+                date={item.date}
                 price={item.price}
+                formattedDate={item.formattedDate ? item.formattedDate : ''}
                 title={item.name}
                 description={item.description}
                 img={item.img ? item.img : ''}

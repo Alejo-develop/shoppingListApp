@@ -57,3 +57,16 @@ export const getWishByCategorieIdServices = async (id: number) => {
     throw err
   }
 }
+
+export const deletedWishService = async (id: number) => {
+  try {
+    const wishList = await getWishServices()
+    const filterWish = wishList.filter((item) => item.id !== id)
+
+    await AsyncStorage.setItem('wish', JSON.stringify(filterWish))
+
+    return filterWish
+  } catch (err) {
+    throw err
+  }
+}

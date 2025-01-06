@@ -6,15 +6,17 @@ interface ButtonTypeWishComponentProps {
   icon: string;
   color: string;
   text: string;
+  onPress?: () => void;
 }
 
 const ButtonTypeWishComponent = ({
   icon,
   color,
-  text
+  text,
+  onPress
 }: ButtonTypeWishComponentProps) => {
   return (
-    <TouchableOpacity style={{alignItems: 'center', width: width * 0.2}}>
+    <TouchableOpacity style={{alignItems: 'center', width: width * 0.2}} onPress={onPress}>
       <Icon name={icon} color={color} size={height * 0.03}/>
       <Text style={{color: 'white', textAlign: 'center', fontSize: 12, fontFamily: literataRegular}}>{text}</Text>
     </TouchableOpacity>

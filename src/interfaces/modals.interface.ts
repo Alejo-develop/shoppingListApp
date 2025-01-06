@@ -20,8 +20,10 @@ export interface InfoUserModalProps {
 
 export interface InfoItemModalProps{
   visibleModal: boolean;
-  onClose: () => void;
   item: PurchaseResponseInterface | WishResponseInterface;
   color: string;
   type: string
+  onClose: () => void;
+  deleteWish: () => void;
+  changeToPurchased: () => void 
 }

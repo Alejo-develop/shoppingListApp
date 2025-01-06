@@ -6,18 +6,20 @@ interface ButtonShopingListScreenProps {
   onPress: () => void;
   text: string;
   color: string;
+  isFocused: boolean
 }
 
 const ButtonShopingListScreen = ({
   onPress,
   text,
   color,
+  isFocused
 }: ButtonShopingListScreenProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.button, {backgroundColor: color}]}>
-      <Text style={styles.text}>{text}</Text>
+      style={[styles.button, isFocused ? {backgroundColor: color} : {backgroundColor: primaryBlack, borderColor: color, borderWidth: 1}]}>
+      <Text style={[styles.text, isFocused ? {} : {color: color},]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -27,7 +29,8 @@ const styles = StyleSheet.create({
     width: width * 0.2,
     height: height * 0.05,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderWidth: 1
   },
   text: {
     color: primaryBlack,

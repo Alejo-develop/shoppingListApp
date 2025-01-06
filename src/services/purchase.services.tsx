@@ -28,6 +28,28 @@ export const createPurchaseServices = async (data: CreatePurchaseInterface) => {
   }
 };
 
+export const wishToPurchasedServices = async (data: PurchaseResponseInterface) => {
+  try {
+    const purchases = await AsyncStorage.getItem('purchases');
+
+    let parsedPurchase: PurchaseResponseInterface[] = [];
+    if (purchases) {
+      parsedPurchase = JSON.parse(purchases);
+    }
+    const formatedData = {
+      ...data,
+      id: parsedPurchase.length + 1,
+    };
+
+    parsedPurchase.push(formatedData);
+    await AsyncStorage.setItem('purchases', JSON.stringify(parsedPurchase));
+
+    return;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export const getPurchasesServices = async () => {
   try {
     const purchases = await AsyncStorage.getItem('purchases');

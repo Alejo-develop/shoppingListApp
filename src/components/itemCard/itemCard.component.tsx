@@ -2,7 +2,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {ButtonPurchaseCardProps} from '../../interfaces/button.interface';
 import InfoCardModal from './components/infoItem.modal';
-import {useState} from 'react';
+import UseItemCard from './hooks/useItemCard.hook';
 
 const ItemCardComponent = ({
   img,
@@ -13,9 +13,21 @@ const ItemCardComponent = ({
   date,
   price,
   description,
-  itemType
+  categorieId,
+  formattedDate,
+  itemType,
 }: ButtonPurchaseCardProps) => {
-  const [isVisibleModal, setVisibleModal] = useState<boolean>(false);
+  const {isVisibleModal, setVisibleModal, changeToPurchased, deleteItem} =  
+  UseItemCard(id, color, {
+      img: img ? img : '',
+      id,
+      name: title,
+      categorie,
+      date,
+      price,
+      description: description ? description : '',
+      categorieId,
+    });
 
   return (
     <View>
@@ -32,7 +44,11 @@ const ItemCardComponent = ({
         </View>
         <View style={styles.containerPrice}>
           <Text style={styles.price}>${price} COP</Text>
-          {itemType === 'wish' ? <Text style={[styles.statusText, {color: color}]}>Status: Pending</Text> : null}
+          {itemType === 'wish' ? (
+            <Text style={[styles.statusText, {color: color}]}>
+              Status: Pending
+            </Text>
+          ) : null}
         </View>
       </TouchableOpacity>
 
@@ -45,11 +61,13 @@ const ItemCardComponent = ({
           id,
           name: title,
           categorie,
-          formattedDate: date,
+          formattedDate: formattedDate,
           price,
           img: img ? img : '',
           description: description ? description : 'N/A',
         }}
+        changeToPurchased={changeToPurchased}
+        deleteWish={deleteItem}
       />
     </View>
   );

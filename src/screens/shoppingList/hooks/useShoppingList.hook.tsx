@@ -22,6 +22,7 @@ const UseShoppingList = () => {
   >([]);
   const [error, setError] = useState<string>('');
   const [itemType, setItemType] = useState<string>(type);
+  const [focused, setFocused] = useState<string>(type)
 
   const globalContext = useGlobalContext();
 
@@ -97,7 +98,7 @@ const UseShoppingList = () => {
   };
 
   useEffect(() => {
-    if (globalContext.isUpdate) {
+    if (globalContext.isUpdate) {  
       getItem(id, itemType);
       globalContext.changeStatusUpdate(false);
     }
@@ -110,6 +111,7 @@ const UseShoppingList = () => {
   );
 
   const handleButtonPress = (type: string) => {
+    setFocused(type)
     setItemType(type);
   };
 
@@ -119,6 +121,7 @@ const UseShoppingList = () => {
     items,
     error,
     itemType,
+    focused,
     handleButtonPress,
   };
 };

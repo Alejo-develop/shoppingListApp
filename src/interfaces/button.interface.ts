@@ -33,8 +33,10 @@ export interface ButtonPurchaseCardProps{
   img?: string,
   color: string;
   categorie: string;
+  categorieId: number;
   price: number;
   description?: string;
-  date: string;
+  date: Date | undefined;
+  formattedDate: string;
   itemType: string;
 }

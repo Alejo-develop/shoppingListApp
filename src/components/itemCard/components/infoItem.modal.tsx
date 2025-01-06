@@ -14,8 +14,10 @@ const InfoCardModal = ({
   item,
   color,
   visibleModal,
-  onClose,
   type,
+  onClose,
+  changeToPurchased,
+  deleteWish
 }: InfoItemModalProps) => {
   return (
     <Modal
@@ -43,8 +45,8 @@ const InfoCardModal = ({
 
             {type != 'wish' ? null : (
               <View style={{flexDirection: 'row', gap: 40}}>
-                <ButtonTypeWishComponent icon='check' color={color} text='Purchased'/>
-                <ButtonTypeWishComponent icon='trash-o' color={color} text='Delete'/>
+                <ButtonTypeWishComponent icon='check' color={color} text='Purchased' onPress={changeToPurchased}/>
+                <ButtonTypeWishComponent icon='trash-o' color={color} text='Delete' onPress={deleteWish}/>
               </View>
             )}
 
