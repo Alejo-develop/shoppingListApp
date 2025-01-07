@@ -1,11 +1,12 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {UserInfoInterface} from '../interfaces/user.interface';
 import {ContextProps} from '../interfaces/context.interface';
-import { findUserServices } from '../services/user.services';
+import { findUserServices, getIfUserIsNewServices } from '../services/user.services';
 
 const GlobalContext = createContext<ContextProps>({
   isUpdate: false,
   userInfo: null,
+  isFirstLaunch: false,
   setIsUpdate: () => {},
   getInfoUser: () => ({name: null, email: null}),
   findInfoUser: async () => {},
@@ -18,10 +19,16 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
     name: '',
     email: '',
   });
+  const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(true)
 
   const getInfoUser = () => {
     return infoUser;
   };
+
+  const fetchAuthUser = async () => {
+    const status = await getIfUserIsNewServices()
+    setIsFirstLaunch(status)
+  }
 
   const findInfoUser = async () => {
     const userFound = await findUserServices()
@@ -44,6 +51,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
 
   useEffect(() => {
     findInfoUser();
+    fetchAuthUser()
   }, []);
 
   return (
@@ -51,6 +59,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
       value={{
         isUpdate,
         userInfo: infoUser,
+        isFirstLaunch,
         setIsUpdate,
         getInfoUser,
         findInfoUser,

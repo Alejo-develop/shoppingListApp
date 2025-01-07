@@ -7,12 +7,16 @@ import MainScreen from '../../screens/main.screen';
 import AddNewItemScreen from '../../screens/addPurchaseOrWish/purchaseOrWish.screen';
 import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
 import { violet } from '../../utils/style.constants';
+import OnboardingScreen from '../../screens/onboarding/onbording.screen';
+import { useGlobalContext } from '../../context/global.context';
 
 const Stack = createNativeStackNavigator();
 
 const Stacks = () => {
+  const auth = useGlobalContext()
+  console.log('eee', auth.isFirstLaunch);
   return (
-      <Stack.Navigator initialRouteName="main">
+      <Stack.Navigator initialRouteName={auth.isFirstLaunch ? 'onboarding' : 'main'}>
         <Stack.Screen
           name="main"
           component={MainScreen}
@@ -48,6 +52,11 @@ const Stacks = () => {
           component={ShoppingListScreen}
           options={{headerShown: false}}
           initialParams={{ color: violet }}
+        />
+        <Stack.Screen
+          name="onboarding"
+          component={OnboardingScreen}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
   );

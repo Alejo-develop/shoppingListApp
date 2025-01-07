@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
     fontSize: height * 0.025,
     fontFamily: fontTitles,
     paddingRight: 12,
+    width: width * 0.4,
+    textAlign: 'center'
   },
   icon: {
     fontSize: height * 0.05,

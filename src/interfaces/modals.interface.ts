@@ -5,7 +5,7 @@ import { CategoryResponseInterface } from './cateogry.interface';
 
 export interface ImgBannerModalProps {
   visibleModal: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   onCloseWithImg?: () => void;
   color: string;
   img: string | null;

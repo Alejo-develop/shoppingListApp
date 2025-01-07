@@ -1,6 +1,8 @@
 export const img = {
+  tsuna:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736277366/tsuna-removebg-preview_ttvmlh.png',
   reborn:
-    'https://res.cloudinary.com/djqwo9izl/image/upload/v1735582853/reborn_cg3xls.png',
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736274787/reborn_dj16r9.webp',
   solari:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583301/solari_h1kdtg.png',
   ornstein:
@@ -17,8 +19,12 @@ export const img = {
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736111611/perro_1_buphhv.gif',
   almaDeCeniza:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736190046/alma_de_ceniza_ql6dic.png',
+  lambo:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736278584/lambo-removebg-preview_spx0ix.png',
+  reborn2:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736279993/reborn2-removebg-preview_ckwj04.png',
 };
-  
+
 export type ImageKeys = 'ornstein' | 'artorias' | 'almaDeCeniza';
 export const imgCardHome: Record<ImageKeys, string> = {
   ornstein:

@@ -1,7 +1,6 @@
-import {Image, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import styles from './style';
 import ButtonMenuComponent from '../../components/buttonMenu/buttonMenu.component';
-import {img} from '../../utils/img.constants';
 import InfoUserModal from '../../components/infoUserModal/infoUser.modal';
 import UseMenu from './hooks/useMenu.hook';
 
@@ -39,13 +38,6 @@ const MenuScreen = () => {
           onPress={() => setIsVisibleModal(true)}
         />
       </View>
-
-      <Image
-        source={{
-          uri: img.reborn,
-        }}
-        style={styles.img}
-      />
 
       <InfoUserModal
         visibleModal={isVisible}

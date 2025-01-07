@@ -11,13 +11,14 @@ import {height} from '../../utils/style.constants';
 import ContainerWishes from './components/containerWishes.component';
 
 const HomeScreen = () => {
-  // const borrar = async () => {
-  //   await AsyncStorage.removeItem('purchases')
-  //   await AsyncStorage.removeItem('wish')
-  //   await AsyncStorage.removeItem('categories')
-  //   await AsyncStorage.removeItem('infoUser')
-  //   return
-  // }
+  const borrar = async () => {
+    // await AsyncStorage.removeItem('purchases')
+    // await AsyncStorage.removeItem('wish')
+    // await AsyncStorage.removeItem('categories')
+    // await AsyncStorage.removeItem('infoUser')
+    await AsyncStorage.removeItem('isFirstLaunch')
+    return
+  }
 
   // useEffect(() => {
   //   borrar()
