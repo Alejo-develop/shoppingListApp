@@ -9,19 +9,27 @@ import {
   width,
 } from '../../../utils/style.constants';
 
-const ContainerPurchaseByCategorie = () => {
+interface ContainerPurchaseByCategorie {
+  title: string;
+  count: number;
+}
+
+const ContainerPurchaseByCategorie = ({
+  title,
+  count,
+}: ContainerPurchaseByCategorie) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
-        <View style={{width: width * 0.39}}>
+        <View style={{width: width * 0.47, paddingLeft: 13}}>
           <Text style={styles.title}>
-            La mayoria de tus compras este mes fueron en
+            the majority of your purchases this month were in
           </Text>
         </View>
       </View>
       <View style={styles.containerStatic}>
-        <Text style={styles.textStatic}>15</Text>
-        <Text style={styles.textStatic}>Videojuegos</Text>
+        <Text style={styles.textStatic}>{count}</Text>
+        <Text style={styles.textStatic}>{title}</Text>
       </View>
     </View>
   );
@@ -33,7 +41,7 @@ const styles = StyleSheet.create({
     height: height * 0.08,
     backgroundColor: primaryBlack,
     flexDirection: 'row',
-    elevation: 12
+    elevation: 12,
   },
   containerTitle: {
     width: width * 0.515,
@@ -50,7 +58,7 @@ const styles = StyleSheet.create({
     width: width * 0.32,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingRight: 17
+    paddingRight: 17,
   },
   textStatic: {
     textAlign: 'center',

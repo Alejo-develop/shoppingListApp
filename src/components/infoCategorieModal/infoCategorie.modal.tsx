@@ -7,7 +7,7 @@ import ButtonImg from '../../screens/createCategory/components/buttonImg.compone
 import UseInfoCategorieModal from './hook/useIfoCategorieModal.hook';
 import ColorsContainer from '../../screens/createCategory/components/colorsContainer.component';
 import InputComponent from '../input/input.component';
-import {height, literataBold} from '../../utils/style.constants';
+import {height, literataBold, width} from '../../utils/style.constants';
 import ButtonGenericComponent from '../buttonGeneric/buttonGeneric.component';
 
 const InfoCategorieModal = ({
@@ -49,8 +49,9 @@ const InfoCategorieModal = ({
       onRequestClose={handleCloseModal}
       animationType="slide"
       transparent={true}>
-      <ScrollView contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled">
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled">
         <View style={styles.modal}>
           <HeaderModalComponent
             text="Settings"
@@ -96,14 +97,18 @@ const InfoCategorieModal = ({
               onChangeText={text => handleFormChange('description', text)}
             />
             <View style={styles.containerDescription}>
-              <Text
-                style={{
-                  fontFamily: literataBold,
-                  textAlign: 'center',
-                  fontSize: 10,
-                }}>
-                {categorie.description ? categorie.description : 'Add a description...' }
-              </Text>
+              <View style={{width: width * 0.8}}>
+                <Text
+                  style={{
+                    fontFamily: literataBold,
+                    textAlign: 'center',
+                    fontSize: 11,
+                  }}>
+                  {categorie.description
+                    ? categorie.description
+                    : 'Add a description...'}
+                </Text>
+              </View>
             </View>
 
             <ButtonGenericComponent

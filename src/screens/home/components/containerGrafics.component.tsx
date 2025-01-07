@@ -11,7 +11,7 @@ const ContainerGraphicsComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
-        <Text style={styles.title}>Estadisticas Del mes</Text>
+        <Text style={styles.title}>Statistics of the month</Text>
       </View>
 
       <View style={styles.containerStatics}>

@@ -18,6 +18,16 @@ export const img = {
   almaDeCeniza:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736190046/alma_de_ceniza_ql6dic.png',
 };
+  
+export type ImageKeys = 'ornstein' | 'artorias' | 'almaDeCeniza';
+export const imgCardHome: Record<ImageKeys, string> = {
+  ornstein:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583319/Ornstein_z4ffgv.png',
+  artorias:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1735583332/artorias_ix2chl.png',
+  almaDeCeniza:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736190046/alma_de_ceniza_ql6dic.png',
+};
 
 export const bannersCategory = [
   {

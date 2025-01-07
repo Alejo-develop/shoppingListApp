@@ -10,17 +10,22 @@ import {
 } from '../../../utils/style.constants';
 import { img } from '../../../utils/img.constants';
 
-const NumPurchasesContainerComponent = () => {
+interface NumPurchasesContainerComponentProps{
+  num: number;
+  img: string;
+}
+
+const NumPurchasesContainerComponent = ({num, img}: NumPurchasesContainerComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerStatistics}>
-        <Text style={styles.num}>22</Text>
-        <View style={{width: width * 0.36}}>
-          <Text style={styles.text}>Numero de compras el ultimo mes</Text>
+        <Text style={styles.num}>{num}</Text>
+        <View style={{width: width * 0.4}}>
+          <Text style={styles.text}>Number of purchases in the last month</Text>
         </View>
       </View>
       <View style={styles.containerImg}>
-        <Image style={styles.img} source={{uri: img.ornstein}}/>
+        <Image style={styles.img} source={{uri: img}}/>
       </View>
     </View>
   );

@@ -22,7 +22,7 @@ const HomeScreen = () => {
   // useEffect(() => {
   //   borrar()
   // }, [])
-  const {wishes} = UseHome();
+  const {wishes, purchasesByMonth, categorieMoreRaiting, imgBanner} = UseHome();
 
   return (
     <SafeAreaProvider>
@@ -38,14 +38,16 @@ const HomeScreen = () => {
               height: wishes.length === 0 ? height * 0.8 : height * 1.05,
             }}>
             <View style={styles.containerStatics}>
-              <NumPurchasesContainerComponent />
-              <ContainerPurchaseByCategorie />
+              <NumPurchasesContainerComponent num={purchasesByMonth} img={imgBanner}/>
+              <ContainerPurchaseByCategorie
+                count={categorieMoreRaiting.count}
+                title={categorieMoreRaiting.mostPurchasedCategory}
+              />
             </View>
 
             <ContainerGraphicsComponent />
 
-            <ContainerWishes 
-            items={wishes}/>
+            <ContainerWishes items={wishes} />
           </View>
         </ScrollView>
       </SafeAreaView>

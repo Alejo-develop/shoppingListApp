@@ -17,7 +17,7 @@ const InfoCardModal = ({
   type,
   onClose,
   changeToPurchased,
-  deleteWish
+  deleteWish,
 }: InfoItemModalProps) => {
   return (
     <Modal
@@ -45,8 +45,18 @@ const InfoCardModal = ({
 
             {type != 'wish' ? null : (
               <View style={{flexDirection: 'row', gap: 40}}>
-                <ButtonTypeWishComponent icon='check' color={color} text='Purchased' onPress={changeToPurchased}/>
-                <ButtonTypeWishComponent icon='trash-o' color={color} text='Delete' onPress={deleteWish}/>
+                <ButtonTypeWishComponent
+                  icon="check"
+                  color={color}
+                  text="Purchased"
+                  onPress={changeToPurchased}
+                />
+                <ButtonTypeWishComponent
+                  icon="trash-o"
+                  color={color}
+                  text="Delete"
+                  onPress={deleteWish}
+                />
               </View>
             )}
 
@@ -69,16 +79,18 @@ const InfoCardModal = ({
             </View>
 
             <View style={styles.containerDescription}>
-              <Text
-                style={{
-                  fontFamily: literataBold,
-                  textAlign: 'center',
-                  fontSize: 11,
-                }}>
-                {item.description
-                  ? item.description
-                  : "This item Doesn't have description"}
-              </Text>
+              <View style={{width: width * 0.8}}>
+                <Text
+                  style={{
+                    fontFamily: literataBold,
+                    textAlign: 'center',
+                    fontSize: 11,
+                  }}>
+                  {item.description
+                    ? item.description
+                    : "This item Doesn't have description"}
+                </Text>
+              </View>
             </View>
 
             <ButtonGenericComponent color={color} text="Ok" onPress={onClose} />
