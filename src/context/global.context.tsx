@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
+import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {UserInfoInterface} from '../interfaces/user.interface';
 import {ContextProps} from '../interfaces/context.interface';
 import { findUserServices, getIfUserIsNewServices } from '../services/user.services';
@@ -6,7 +6,8 @@ import { findUserServices, getIfUserIsNewServices } from '../services/user.servi
 const GlobalContext = createContext<ContextProps>({
   isUpdate: false,
   userInfo: null,
-  isFirstLaunch: false,
+  isFirstLaunch: true,
+  loading: true,
   setIsUpdate: () => {},
   getInfoUser: () => ({name: null, email: null}),
   findInfoUser: async () => {},
@@ -20,6 +21,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
     email: '',
   });
   const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(true)
 
   const getInfoUser = () => {
     return infoUser;
@@ -28,6 +30,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
   const fetchAuthUser = async () => {
     const status = await getIfUserIsNewServices()
     setIsFirstLaunch(status)
+    setLoading(false)
   }
 
   const findInfoUser = async () => {
@@ -50,7 +53,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
   };
 
   useEffect(() => {
-    findInfoUser();
+    findInfoUser(); 
     fetchAuthUser()
   }, []);
 
@@ -60,6 +63,7 @@ export const GlobalProvider = ({children}: {children: ReactNode}) => {
         isUpdate,
         userInfo: infoUser,
         isFirstLaunch,
+        loading,
         setIsUpdate,
         getInfoUser,
         findInfoUser,

@@ -9,11 +9,15 @@ import ShoppingListScreen from '../../screens/shoppingList/shoppingList.screen';
 import { violet } from '../../utils/style.constants';
 import OnboardingScreen from '../../screens/onboarding/onbording.screen';
 import { useGlobalContext } from '../../context/global.context';
+import LoadingScreen from '../../screens/home/components/loading';
 
 const Stack = createNativeStackNavigator();
 
 const Stacks = () => {
   const auth = useGlobalContext()
+  if(auth.loading){
+    return <LoadingScreen />
+  }
   console.log('eee', auth.isFirstLaunch);
   return (
       <Stack.Navigator initialRouteName={auth.isFirstLaunch ? 'onboarding' : 'main'}>

@@ -48,17 +48,17 @@ export const saveUserInfoServices = async (user: UserInfoInterface) => {
   }
 };
 
-export const getIfUserIsNewServices = async () => {
-  try {
-    const status = await AsyncStorage.getItem('isFirstLaunch');
-    if (status === null) {
-      return true;
+  export const getIfUserIsNewServices = async () => {
+    try {
+      const status = await AsyncStorage.getItem('isFirstLaunch');
+      if (status === null) {
+        return true;
+      }
+      return false;
+    } catch (err) {
+      throw err;
     }
-    return false;
-  } catch (err) {
-    throw err;
-  }
-};
+  };
 
 export const setFirstLaunchServices = async () => {
   try {
