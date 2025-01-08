@@ -44,3 +44,8 @@ export interface createItemInterface{
   item: CreatePurchaseInterface | CreateWishInterface;
   type: 'wish' | 'purchase'
 }
+
+export interface PuchasesMostRaqtedInterface{
+  category: string;
+  percentage: number;
+}

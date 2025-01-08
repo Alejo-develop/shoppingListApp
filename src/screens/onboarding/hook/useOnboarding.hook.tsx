@@ -7,6 +7,7 @@ import {
 import MessageComponent from '../../../components/message/message.component';
 import {violet} from '../../../utils/style.constants';
 import { useNavigation } from '@react-navigation/native';
+import { useGlobalContext } from '../../../context/global.context';
 
 const UseOnboarding = () => {
   const [form, setForm] = useState<UserInfoInterface>({
@@ -14,6 +15,7 @@ const UseOnboarding = () => {
     email: '',
   });
 
+  const globalContext = useGlobalContext()
   const navigate = useNavigation()
 
   const handleFormChange = (field: keyof UserInfoInterface, value: string) => {
@@ -61,6 +63,7 @@ const UseOnboarding = () => {
           position: 'top',
           text2: 'Your information has been successfully saved',
         });
+        globalContext.setIsUpdate(true)
         navigate.navigate('main' as never)
       } catch (err) {
         MessageComponent({

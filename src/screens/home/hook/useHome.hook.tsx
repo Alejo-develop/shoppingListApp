@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {WishResponseInterface} from '../../../interfaces/item.interface';
+import {PuchasesMostRaqtedInterface, WishResponseInterface} from '../../../interfaces/item.interface';
 import {useFocusEffect} from '@react-navigation/native';
 import MessageComponent from '../../../components/message/message.component';
 import {violet} from '../../../utils/style.constants';
@@ -8,6 +8,7 @@ import {useGlobalContext} from '../../../context/global.context';
 import {
   getMostPurchasedCategoryByMonthServices,
   getPurchasesByMonthServices,
+  getTopCategoriesByPercentageServices,
 } from '../../../services/purchase.services';
 import { ImageKeys, imgCardHome } from '../../../utils/img.constants';
 
@@ -19,6 +20,7 @@ const UseHome = () => {
     count: 0,
   });
   const [imgBanner, setImgBanner] = useState<string>('')
+  const [topCategories, setTopCategories] = useState<PuchasesMostRaqtedInterface[]>([])
 
   const img = imgCardHome
   const globalContext = useGlobalContext();
@@ -108,11 +110,29 @@ const UseHome = () => {
     }
   };
 
+  const getPurchasesMostRated = async () => {
+    try {
+      const categorie = await getTopCategoriesByPercentageServices();
+      console.log(categorie);
+    
+      setTopCategories(categorie)
+    } catch (err) {
+      MessageComponent({
+        type: 'error',
+        text1: 'Error',
+        color: violet,
+        position: 'top',
+        text2: 'Cannot possible get your categorie more rating :(',
+      });
+    }
+  }
+
   useEffect(() => {
     if (globalContext.isUpdate) {
       getWishes();
       getPurchasesByMonth();
       getPurchasesCategorieByMoth();
+      getPurchasesMostRated();
       globalContext.changeStatusUpdate(false);
     }
   }, [globalContext.isUpdate]);
@@ -123,6 +143,7 @@ const UseHome = () => {
       getWishes();
       getPurchasesByMonth();
       getPurchasesCategorieByMoth();
+      getPurchasesMostRated();
     }, []),
   );
 
@@ -131,6 +152,7 @@ const UseHome = () => {
     purchasesByMonth,
     imgBanner,
     categorieMoreRaiting,
+    topCategories
   };
 };
 

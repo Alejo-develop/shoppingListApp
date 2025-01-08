@@ -1,4 +1,4 @@
-import {ScrollView, StatusBar, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import styles from './style';
 import {useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,7 +23,7 @@ const HomeScreen = () => {
   // useEffect(() => {
   //   borrar()
   // }, [])
-  const {wishes, purchasesByMonth, categorieMoreRaiting, imgBanner} = UseHome();
+  const {wishes, purchasesByMonth, categorieMoreRaiting, imgBanner, topCategories} = UseHome();
 
   return (
     <SafeAreaProvider>
@@ -46,7 +46,7 @@ const HomeScreen = () => {
               />
             </View>
 
-            <ContainerGraphicsComponent />
+            <ContainerGraphicsComponent item={topCategories}/>
 
             <ContainerWishes items={wishes} />
           </View>

@@ -128,3 +128,32 @@ export const getMostPurchasedCategoryByMonthServices = async (
     throw err;
   }
 };
+
+export const getTopCategoriesByPercentageServices = async () => {
+  try {
+    const purchases = await getPurchasesServices();
+    const categoryCounts: { [key: string]: number } = {};
+
+    purchases.forEach(purchase => {
+      if (purchase.categorie) {
+        if (!categoryCounts[purchase.categorie]) {
+          categoryCounts[purchase.categorie] = 0;
+        }
+        categoryCounts[purchase.categorie]++;
+      }
+    });
+
+    const totalPurchases = purchases.length;
+    const sortedCategories = Object.entries(categoryCounts).sort(([, a], [, b]) => b - a);
+    const topCategories = sortedCategories.slice(0, 4);
+
+    const topCategoriesWithPercentage = topCategories.map(([category, count]) => ({
+      category,
+      percentage: Math.round((count / totalPurchases) * 100),
+    }));
+
+    return topCategoriesWithPercentage;
+  } catch (err) {
+    throw err;
+  }
+};
