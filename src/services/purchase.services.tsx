@@ -56,7 +56,7 @@ export const getPurchasesServices = async () => {
   try {
     const purchases = await AsyncStorage.getItem('purchases');
     if (!purchases) {
-      throw new Error('Purchases not found');
+      return []
     }
 
     const parsedPurchases: PurchaseResponseInterface[] = JSON.parse(purchases);

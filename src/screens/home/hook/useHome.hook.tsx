@@ -58,13 +58,7 @@ const UseHome = () => {
 
       setWishes(formattedWishes.reverse());
     } catch (err) {
-      MessageComponent({
-        type: 'error',
-        text1: 'Error',
-        color: violet,
-        position: 'top',
-        text2: 'Cannot posible get your categories :(',
-      });
+      console.log(err);
     }
   };
 
@@ -79,13 +73,7 @@ const UseHome = () => {
       );
       setPurchasesByMonth(purchases.length);
     } catch (err) {
-      MessageComponent({
-        type: 'error',
-        text1: 'Error',
-        color: violet,
-        position: 'top',
-        text2: 'Cannot possible get your purchases :(',
-      });
+      console.log(err);
     }
   };
 
@@ -100,30 +88,16 @@ const UseHome = () => {
       );
       setCategorieMoreRaiting(categorie);
     } catch (err) {
-      MessageComponent({
-        type: 'error',
-        text1: 'Error',
-        color: violet,
-        position: 'top',
-        text2: 'Cannot possible get your categorie more rating :(',
-      });
+      console.log(err);
     }
   };
 
   const getPurchasesMostRated = async () => {
     try {
       const categorie = await getTopCategoriesByPercentageServices();
-      console.log(categorie);
-    
       setTopCategories(categorie)
     } catch (err) {
-      MessageComponent({
-        type: 'error',
-        text1: 'Error',
-        color: violet,
-        position: 'top',
-        text2: 'Cannot possible get your categorie more rating :(',
-      });
+      console.log(err);
     }
   }
 

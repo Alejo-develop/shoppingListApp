@@ -31,7 +31,7 @@ export const getWishServices = async () => {
   try {
     const wishList = await AsyncStorage.getItem('wish');
     if (!wishList) {
-      throw new Error('Wish not found');
+      return []
     }
 
     const parsedWish: WishResponseInterface[] = JSON.parse(wishList);

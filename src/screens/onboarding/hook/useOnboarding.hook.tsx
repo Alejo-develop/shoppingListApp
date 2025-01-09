@@ -54,6 +54,7 @@ const UseOnboarding = () => {
       try {
         await saveUserInfoServices(form);
         await setFirstLaunch()
+        globalContext.changeStatusUpdate(true)
         modal(false)
 
         MessageComponent({
@@ -63,7 +64,6 @@ const UseOnboarding = () => {
           position: 'top',
           text2: 'Your information has been successfully saved',
         });
-        globalContext.setIsUpdate(true)
         navigate.navigate('main' as never)
       } catch (err) {
         MessageComponent({

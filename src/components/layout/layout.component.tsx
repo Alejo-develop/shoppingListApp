@@ -1,6 +1,7 @@
-import {Text,View} from 'react-native';
+import {Text, View} from 'react-native';
 import styles from './styles';
 import {useGlobalContext} from '../../context/global.context';
+import {useEffect} from 'react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,11 +9,21 @@ interface LayoutProps {
 
 const LayoutComponent = ({children}: LayoutProps) => {
   const globlaContext = useGlobalContext();
-  const user = globlaContext.getInfoUser()
+  let user = globlaContext.getInfoUser();
+
+  useEffect(() => {
+    if (globlaContext.isUpdate) {
+      user = globlaContext.getInfoUser();
+      globlaContext.changeStatusUpdate(false);
+    }
+  }, [globlaContext.isUpdate]);
+
   return (
     <View>
       <View style={styles.containerHeader}>
-        <Text style={styles.welcome}>Welcome <Text>{user.name}</Text></Text>
+        <Text style={styles.welcome}>
+          Welcome <Text>{user.name}</Text>
+        </Text>
       </View>
 
       <View style={styles.children}>{children}</View>

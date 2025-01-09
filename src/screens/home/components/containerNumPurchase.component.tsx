@@ -8,25 +8,63 @@ import {
   violet,
   width,
 } from '../../../utils/style.constants';
-import { img } from '../../../utils/img.constants';
+import {img} from '../../../utils/img.constants';
+import React from 'react';
 
-interface NumPurchasesContainerComponentProps{
+interface NumPurchasesContainerComponentProps {
   num: number;
-  img: string;
+  imgForComponent: string;
 }
 
-const NumPurchasesContainerComponent = ({num, img}: NumPurchasesContainerComponentProps) => {
+const NumPurchasesContainerComponent = ({
+  num,
+  imgForComponent,
+}: NumPurchasesContainerComponentProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.containerStatistics}>
-        <Text style={styles.num}>{num}</Text>
-        <View style={{width: width * 0.4}}>
-          <Text style={styles.text}>Number of purchases in the last month</Text>
+      {num && imgForComponent ? (
+        <>
+          <View style={styles.containerStatistics}>
+            <Text style={styles.num}>{num}</Text>
+            <View style={{width: width * 0.4}}>
+              <Text style={styles.text}>
+                Number of purchases in the last month
+              </Text>
+            </View>
+          </View>
+          <View style={styles.containerImg}>
+            <Image style={styles.img} source={{uri: imgForComponent}} />
+          </View>
+        </>
+      ) : (
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingLeft: width * 0.125,
+          }}>
+          <Text
+            style={{
+              fontFamily: literataRegular,
+              color: 'white',
+              textAlign: 'center',
+              fontSize: 12,
+              width: width * 0.6,
+            }}>
+            Create categories to register your purchases in the menu and here we
+            will tell you how many purchases you have made in the month ;)
+          </Text>
+
+          <Image
+            source={{uri: img.piramidHead}}
+            style={{width: width * 0.3, height: height * 0.1, position: 'absolute',
+              bottom: 1,
+              right: -30,
+              zIndex: -1
+            }}
+          />
         </View>
-      </View>
-      <View style={styles.containerImg}>
-        <Image style={styles.img} source={{uri: img}}/>
-      </View>
+      )}
     </View>
   );
 };
@@ -43,7 +81,7 @@ const styles = StyleSheet.create({
     width: width * 0.515,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8
+    gap: 8,
   },
   num: {
     color: violet,
@@ -54,15 +92,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: literataBold,
     fontSize: 14,
-    color: 'white'
+    color: 'white',
   },
   containerImg: {
     width: width * 0.32,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   img: {
     height: height * 0.175,
-    width: width * 0.26
+    width: width * 0.26,
   },
 });
 

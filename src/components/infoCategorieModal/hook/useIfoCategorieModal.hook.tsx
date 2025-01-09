@@ -42,18 +42,18 @@ const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
       setIsVisibleModal(false);
       return;
     }
-
+  
     const formattedData = {
       ...form,
-      name: form.name ? form.name : categorie.name,
-      description: form.description ? form.description : categorie.description,
+      name: form.name || categorie.name,
+      description: form.description || '',
       color,
       img: imgSelected,
     };
-
+  
     try {
       await updateCategoryService(categorie.id, formattedData);
-
+  
       MessageComponent({
         type: 'success',
         text1: 'Categorie Updated',
@@ -68,11 +68,12 @@ const UseInfoCategorieModal = (categorie: CategoryResponseInterface) => {
         type: 'error',
         text1: 'Error',
         position: 'top',
-        text2: 'Cannot posible updated categorie :C',
+        text2: 'Cannot update category',
         color: color,
       });
     }
   };
+  
 
   useEffect(() => {
     setColor(categorie.color);

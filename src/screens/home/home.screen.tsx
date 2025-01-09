@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Image, Text} from 'react-native';
 import styles from './style';
 import {useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,23 +7,31 @@ import ContainerPurchaseByCategorie from './components/containerPurchaseByCatego
 import ContainerGraphicsComponent from './components/containerGrafics.component';
 import UseHome from './hook/useHome.hook';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-import {height} from '../../utils/style.constants';
+import {height, literataBold, literataRegular, primaryBlack, width} from '../../utils/style.constants';
 import ContainerWishes from './components/containerWishes.component';
+import React from 'react';
+import { img } from '../../utils/img.constants';
 
 const HomeScreen = () => {
-  const borrar = async () => {
-    // await AsyncStorage.removeItem('purchases')
-    // await AsyncStorage.removeItem('wish')
-    // await AsyncStorage.removeItem('categories')
-    // await AsyncStorage.removeItem('infoUser')
-    await AsyncStorage.removeItem('isFirstLaunch')
-    return
-  }
+  // const borrar = async () => {
+  //   await AsyncStorage.removeItem('purchases')
+  //   await AsyncStorage.removeItem('wish')
+  //   await AsyncStorage.removeItem('categories')
+  //   await AsyncStorage.removeItem('infoUser')
+  //   await AsyncStorage.removeItem('isFirstLaunch')
+  //   return
+  // }
 
   // useEffect(() => {
   //   borrar()
   // }, [])
-  const {wishes, purchasesByMonth, categorieMoreRaiting, imgBanner, topCategories} = UseHome();
+  const {
+    wishes,
+    purchasesByMonth,
+    categorieMoreRaiting,
+    imgBanner,
+    topCategories,
+  } = UseHome();
 
   return (
     <SafeAreaProvider>
@@ -39,16 +47,26 @@ const HomeScreen = () => {
               height: wishes.length === 0 ? height * 0.8 : height * 1.05,
             }}>
             <View style={styles.containerStatics}>
-              <NumPurchasesContainerComponent num={purchasesByMonth} img={imgBanner}/>
+              <NumPurchasesContainerComponent
+                num={purchasesByMonth}
+                imgForComponent={imgBanner}
+              />
               <ContainerPurchaseByCategorie
                 count={categorieMoreRaiting.count}
                 title={categorieMoreRaiting.mostPurchasedCategory}
               />
             </View>
 
-            <ContainerGraphicsComponent item={topCategories}/>
+            {purchasesByMonth && topCategories?.length > 0 ? (
+              <ContainerGraphicsComponent item={topCategories} />
+            ) : (
+              <View style ={styles.containerError}>
+                <Image style={{width: width * 0.5, height: height * 0.17}} source={{uri: img.perro2}}/>
+                <Text style={{color: 'white', fontFamily: literataBold}}>Nothing to see here for now</Text>
+              </View>
+            )}
 
-            <ContainerWishes items={wishes} />
+            {wishes.length > 0 && <ContainerWishes items={wishes} />}
           </View>
         </ScrollView>
       </SafeAreaView>

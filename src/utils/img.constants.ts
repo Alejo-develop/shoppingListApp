@@ -23,6 +23,8 @@ export const img = {
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736278584/lambo-removebg-preview_spx0ix.png',
   reborn2:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1736279993/reborn2-removebg-preview_ckwj04.png',
+  reborn3:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1736453589/reborn3_sj12an.png',
 };
 
 export type ImageKeys = 'ornstein' | 'artorias' | 'almaDeCeniza';
