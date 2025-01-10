@@ -178,6 +178,7 @@ const UseShoppingList = () => {
     categorie,
     handleButtonPress,
     onCloseModal,
+    setCategorieColor
   };
 };
 

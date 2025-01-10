@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
+import {StyleProp, ViewStyle} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {height, width} from '../../utils/style.constants';
+import {height} from '../../utils/style.constants';
 
 const ButtonBackComponent = ({color, customStyles, handleClose}: {color: string, handleClose?: () => void, customStyles?: StyleProp<ViewStyle>}) => {
   const navigate = useNavigation();

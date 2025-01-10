@@ -1,7 +1,5 @@
 import {Modal, StyleSheet, Text, View} from 'react-native';
-import HeaderModalComponent from '../../../components/headerModal/headerModal.component';
 import {
-  fontTitles,
   height,
   literataBold,
   primaryBlack,

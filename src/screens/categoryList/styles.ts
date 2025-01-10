@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {
-  fontTitles,
   height,
   literataBold,
   literataRegular,

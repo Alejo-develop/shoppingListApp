@@ -1,8 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import {PuchasesMostRaqtedInterface, WishResponseInterface} from '../../../interfaces/item.interface';
 import {useFocusEffect} from '@react-navigation/native';
-import MessageComponent from '../../../components/message/message.component';
-import {violet} from '../../../utils/style.constants';
 import {getWishServices} from '../../../services/wish.services';
 import {useGlobalContext} from '../../../context/global.context';
 import {

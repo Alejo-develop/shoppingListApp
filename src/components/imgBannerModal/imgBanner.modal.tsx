@@ -30,7 +30,7 @@ const ImgBannerModal = ({
           <HeaderModalComponent
             text="Select Image"
             color={color}
-            hanldeClose={onClose}
+            hanldeClose={() => onClose}
           />
 
           <View style={styles.containerBanners}>

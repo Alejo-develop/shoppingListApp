@@ -1,7 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {img} from '../../../utils/img.constants';
 import {
-  fontTitles,
   height,
   literataBold,
   primaryBlack,

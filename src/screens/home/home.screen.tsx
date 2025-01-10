@@ -1,13 +1,11 @@
 import {ScrollView, View, Image, Text} from 'react-native';
 import styles from './style';
-import {useEffect} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import NumPurchasesContainerComponent from './components/containerNumPurchase.component';
 import ContainerPurchaseByCategorie from './components/containerPurchaseByCategorie.component';
 import ContainerGraphicsComponent from './components/containerGrafics.component';
 import UseHome from './hook/useHome.hook';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-import {height, literataBold, literataRegular, primaryBlack, width} from '../../utils/style.constants';
+import {height, literataBold, width} from '../../utils/style.constants';
 import ContainerWishes from './components/containerWishes.component';
 import React from 'react';
 import { img } from '../../utils/img.constants';

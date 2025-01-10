@@ -5,7 +5,6 @@ import ItemCardComponent from '../../../components/itemCard/itemCard.component';
 import {
   height,
   literataBold,
-  secondaryBlack,
   violet,
   width,
 } from '../../../utils/style.constants';
