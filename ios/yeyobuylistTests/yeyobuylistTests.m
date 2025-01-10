@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface yeyobuylistTests : XCTestCase
+@interface Vongola_CartTests : XCTestCase
 
 @end
 
-@implementation yeyobuylistTests
+@implementation Vongola_CartTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

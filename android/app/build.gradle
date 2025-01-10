@@ -78,9 +78,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.yeyobuylist"
+    namespace "com.Vongola_Cart"
     defaultConfig {
-        applicationId "com.yeyobuylist"
+        applicationId "com.Vongola_Cart"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -45,6 +45,7 @@ const HomeScreen = () => {
             style={{
               alignItems: 'center',
               height: wishes.length === 0 ? height * 0.8 : height * 1.05,
+              gap: wishes.length === 0 ? 40 : 0
             }}>
             <View style={styles.containerStatics}>
               <NumPurchasesContainerComponent
